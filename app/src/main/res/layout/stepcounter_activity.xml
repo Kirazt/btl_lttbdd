@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="@drawable/background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/currentday"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:textColor="@color/gold"
+        android:fontFamily="@font/nunito_bold"
+        android:text="February 16"
+        android:textSize="25dp"
+        android:textFontWeight="800"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_gravity="center|top"
+        android:layout_height="43dp"
+        android:gravity="center_horizontal"
+        android:divider="@drawable/space"
+        android:showDividers="middle"
+        android:layout_marginTop="70dp"
+        >
+
+        <RelativeLayout
+            android:layout_width="45dp"
+            android:layout_height="wrap_content">
+
+            <ProgressBar
+                android:id="@+id/progressBar0"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/progressshape"
+                android:indeterminate="false"
+                android:max="100"
+                android:progress="25"
+                android:progressDrawable="@drawable/progressbar" />
+            <TextView
+                android:id="@+id/preday3"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_centerInParent="true"
+                android:textColor="@color/gold"
+                android:text="18"
+                android:textSize="15dp"
+                android:textStyle="bold"/>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="45dp"
+            android:layout_height="wrap_content">
+            <ProgressBar
+                android:id="@+id/progressBar1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:indeterminate="false"
+                android:progressDrawable="@drawable/progressbar"
+                android:background="@drawable/progressshape"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:max="100"
+                android:progress="30" />
+            <TextView
+                android:id="@+id/preday2"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_centerInParent="true"
+                android:textColor="@color/gold"
+                android:text="18"
+                android:textSize="15dp"
+                android:textStyle="bold"/>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="45dp"
+            android:layout_height="wrap_content">
+            <ProgressBar
+                android:id="@+id/progressBar2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:indeterminate="false"
+                android:progressDrawable="@drawable/progressbar"
+                android:background="@drawable/progressshape"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:max="100"
+                android:progress="10" />
+            <TextView
+                android:id="@+id/preday1"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_centerInParent="true"
+                android:textColor="@color/gold"
+                android:text="18"
+                android:textSize="15dp"
+                android:textStyle="bold"/>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="45dp"
+            android:layout_height="wrap_content">
+
+            <ProgressBar
+                android:id="@+id/progressBarcurrent"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/currentprogress"
+                android:indeterminate="false"
+                android:max="100"
+                android:progress="0"
+                android:progressDrawable="@drawable/progressbar"
+                android:theme="@style/progressBargold" />
+
+            <TextView
+                android:id="@+id/curday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="18"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="45dp"
+            android:layout_height="wrap_content">
+            <ProgressBar
+                android:id="@+id/progressBar3"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:indeterminate="false"
+                android:progressDrawable="@drawable/progressbar"
+                android:background="@drawable/progressshape"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:max="100"
+                android:progress="0" />
+
+            <TextView
+                android:id="@+id/nxday1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="18"
+                android:textColor="@color/gold"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="45dp"
+            android:layout_height="wrap_content">
+            <ProgressBar
+                android:id="@+id/progressBar4"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:indeterminate="false"
+                android:progressDrawable="@drawable/progressbar"
+                android:background="@drawable/progressshape"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:max="100"
+                android:progress="0" />
+            <TextView
+                android:id="@+id/nxday2"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_centerInParent="true"
+                android:textColor="@color/gold"
+                android:text="18"
+                android:textSize="15dp"
+                android:textStyle="bold"/>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="45dp"
+            android:layout_height="wrap_content">
+            <ProgressBar
+                android:id="@+id/progressBar5"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:indeterminate="false"
+                android:progressDrawable="@drawable/progressbar"
+                android:background="@drawable/progressshape"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:max="100"
+                android:progress="0" />
+            <TextView
+                android:id="@+id/nxday3"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_centerInParent="true"
+                android:textColor="@color/gold"
+                android:text="18"
+                android:textSize="15dp"
+                android:textStyle="bold"/>
+
+        </RelativeLayout>
+    </LinearLayout>
+
+
+    <FrameLayout
+        android:layout_width = "match_parent"
+        android:layout_height = "match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_centerInParent="true">
+
+
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_gravity="center"
+            android:src="@drawable/counter"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/nunito_bold"
+            android:textFontWeight="1000"
+            android:layout_marginBottom="30dp"
+            android:text="steps"
+            android:textSize="20dp"
+            android:lines="1" />
+
+        <TextView
+            android:id="@+id/stepcounter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/nunito_bold"
+            android:textFontWeight="1000"
+            android:text="0"
+            android:textSize="40dp"
+            android:lines="1" />
+        <TextView
+            android:id="@+id/convertscore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/nunito_bold"
+            android:layout_marginTop="35dp"
+            android:textFontWeight="1000"
+            android:text="1 step = 1 token"
+            android:textSize="13dp"
+            android:lines="1" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/nunito_bold"
+            android:layout_marginTop="55dp"
+            android:textFontWeight="700"
+            android:text="1 step = 10 tokens"
+            android:textSize="15dp"
+            android:lines="1" />
+        <TextView
+            android:id="@+id/buffstatus"
+            android:layout_marginTop="200dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/nunito_bold"
+            android:textColor="@color/white"
+            android:textFontWeight="700"
+            android:drawableRight="@drawable/ic_baseline_info_24"
+            android:drawablePadding="5dp"
+            android:text="Buff rate: 0%"
+            android:textSize="17dp"
+            android:lines="1" />
+    </FrameLayout>
+
+</FrameLayout>

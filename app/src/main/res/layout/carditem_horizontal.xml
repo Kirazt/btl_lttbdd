@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardBackgroundColor="@color/Transparent"
+    app:cardElevation="0dp"
+    >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/item_view"
+                    android:layout_width="150dp"
+                    android:layout_height="200dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/gray_item" />
+                <TextView
+                    android:id="@+id/lvitem"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Lv1"
+                    android:fontFamily="@font/nunito_bold"
+                    android:textColor="@color/white"
+                    android:layout_alignBottom="@+id/item_view"
+                    android:paddingBottom="50dp"
+                    android:layout_marginLeft="25dp"/>
+
+                <TextView
+                    android:id="@+id/buffrateattr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/item_view"
+                    android:layout_marginLeft="25dp"
+                    android:fontFamily="@font/nunito_bold"
+                    android:paddingBottom="30dp"
+                    android:text="Buff rate: 20%"
+                    android:textColor="@color/white"
+                    android:textSize="10dp" />
+
+                <TextView
+                    android:id="@+id/quantityitem"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/item_view"
+                    android:fontFamily="@font/nunito_bold"
+                    android:layout_marginLeft="125dp"
+                    android:paddingBottom="25dp"
+                    android:text="11"
+                    android:textColor="@color/white"
+                    android:textSize="11dp" />
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+            <Button
+                android:id="@+id/useitembtn"
+                android:layout_width="60dp"
+                android:layout_height="20dp"
+                android:text="Use"
+                android:textAllCaps="false"
+                android:visibility="visible"
+                android:fontFamily="@font/nunito_bold"
+                android:textColor="@color/white"
+                android:background="@drawable/roundedbtn"
+                android:layout_gravity="center|bottom"
+                /> <Button
+                android:id="@+id/cancelitembtn"
+                android:layout_width="60dp"
+                android:layout_height="20dp"
+                android:text="Cancel"
+                android:visibility="gone"
+                android:textAllCaps="false"
+                android:fontFamily="@font/nunito_bold"
+                android:textColor="@color/pink"
+                android:background="@drawable/roundblackbtn"
+                android:layout_gravity="center|bottom"
+                />
+            </RelativeLayout>
+        </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>
