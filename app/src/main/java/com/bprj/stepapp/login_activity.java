@@ -16,6 +16,7 @@ import android.hardware.SensorManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -35,7 +36,6 @@ public class login_activity extends AppCompatActivity{
     Boolean isnew= false;
     String acc_id;
     Button test;
-    private static int TIME_OUT = 500;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,21 +48,26 @@ public class login_activity extends AppCompatActivity{
         test = findViewById(R.id.testaccbtn);
 
         test.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                acc_id = UUID.randomUUID().toString();
-                isnew = true;
-                saveData();
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
+                @Override
+                public void onClick(View view) {
+                    loadData();
+                    if (acc_id == null||acc_id.isEmpty()) {
+                        acc_id = UUID.randomUUID().toString();
+                        isnew = true;
+                        saveData();
+                        Intent i = new Intent(login_activity.this, tab_activity.class);
+                        startActivity(i);
+                        finish();
+                    } else {
+                        isnew = true;
+                        saveData();
                         Intent i = new Intent(login_activity.this, tab_activity.class);
                         startActivity(i);
                         finish();
                     }
-                }, TIME_OUT);
+                }
             }
-        });
+          );
     }
 
     public void saveData(){
@@ -73,4 +78,8 @@ public class login_activity extends AppCompatActivity{
         editor.putBoolean("isnew", isnew);
         editor.apply();
     };
+    public void loadData(){
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS,Context.MODE_PRIVATE);
+         acc_id = sharedPreferences.getString("acc_id", null);
+    }
 }

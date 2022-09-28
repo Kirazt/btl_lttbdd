@@ -66,6 +66,6 @@ public class MainActivity extends AppCompatActivity{
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS,Context.MODE_PRIVATE);
         isnew = sharedPreferences.getBoolean("isnew", false);
 
-        Log.i("steplast", String.valueOf(isnew));
+        Log.i("stepacc", String.valueOf(isnew));
     }
 }

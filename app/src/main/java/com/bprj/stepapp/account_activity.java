@@ -4,6 +4,7 @@ import static android.content.Context.MODE_PRIVATE;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -26,6 +27,8 @@ public class account_activity extends Fragment {
     Button withdrawbtn, depositbtn, logoutbtn;
     Dialog dialog;
     TextView tokentext, acc_id;
+    String accid;
+    boolean isnew= false;
     public static final String SHARED_PREFS = "sharedPrefs";
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -68,7 +71,8 @@ public class account_activity extends Fragment {
     public void onResume() {
         SharedPreferences prefs = getActivity().getSharedPreferences(SHARED_PREFS , MODE_PRIVATE);
         int restoredText = prefs.getInt("score", 0);
-        String accid = prefs.getString("acc_id", null);
+        accid = prefs.getString("acc_id", null);
+        saveData();
 
         acc_id.setText(accid);
         tokentext.setText(String.valueOf(restoredText));
@@ -127,7 +131,10 @@ public class account_activity extends Fragment {
         accpetlogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                isnew =false;
+                saveData();
+                Intent i = new Intent(getActivity(), login_activity.class);
+                startActivity(i);
             }
         });
         dialog.show();
@@ -161,4 +168,12 @@ public class account_activity extends Fragment {
         });
         dialog.show();
     }
+    public void saveData(){
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(SHARED_PREFS,Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        editor.putString("acc_id", accid);
+        editor.putBoolean("isnew", isnew);
+        editor.apply();
+    };
 }

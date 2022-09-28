@@ -3,8 +3,11 @@ package com.bprj.stepapp;
 
 import static android.content.Context.MODE_PRIVATE;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -16,6 +19,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,7 +41,7 @@ public class StepCounter_Activity extends Fragment implements SensorEventListene
     public static final String SHARED_PREFS = "sharedPrefs";
     public static final String SCORE = "score";
     public static final String STEP = "step";
-    TextView step,score, currentday, preday3, preday2, preday1, curday, nxday1, nxday2, nxday3, buffstatus;
+    TextView step,score, currentday, preday3, preday2, preday1, curday, nxday1, nxday2, nxday3, buffstatus,info;
     SensorManager sensorManager;
     Sensor msensor;
     boolean run = false;
@@ -66,7 +70,9 @@ public class StepCounter_Activity extends Fragment implements SensorEventListene
         Date date = new Date();
         SimpleDateFormat formatter ;
         String strDate ;
+        Dialog dialog = new Dialog(this.getActivity());
 
+        info =  getActivity().findViewById(R.id.buffstatus);
         curday = (TextView) getActivity().findViewById(R.id.curday);
         preday1 = (TextView) getActivity().findViewById(R.id.preday1);
         preday2 = (TextView) getActivity().findViewById(R.id.preday2);
@@ -108,6 +114,21 @@ public class StepCounter_Activity extends Fragment implements SensorEventListene
         nxday3.setText(String.valueOf(date1.plusDays(3).getDayOfMonth()));
         ////////////////////////////////
 
+        info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.setContentView(R.layout.guide_introduction);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                ImageView imageView = dialog.findViewById(R.id.closeitrodialog);
+                imageView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.dismiss();
+                    }
+                });
+                dialog.show();
+            }
+        });
 
     }
     @Override

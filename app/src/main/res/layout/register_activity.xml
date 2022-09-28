@@ -5,20 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".MainActivity">
+    >
 
-
-    <ImageView
-        android:id="@+id/iconapp"
-        android:layout_marginBottom="350dp"
-        android:layout_width="200dp"
-        android:layout_height="150dp"
-        android:src="@mipmap/app_icon_removebg"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <TextView
+        android:id="@+id/registertext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nunito_bold"
+        android:text="Register"
+        android:textColor="@color/white"
+        android:textSize="30dp"
+        android:layout_marginTop="200dp"
         app:layout_constraintEnd_toEndOf="parent"
-
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/gmail"
@@ -31,7 +31,7 @@
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iconapp" />
+        app:layout_constraintTop_toBottomOf="@+id/registertext" />
 
     <EditText
         android:id="@+id/password"
@@ -47,41 +47,15 @@
         app:layout_constraintTop_toBottomOf="@+id/gmail" />
 
     <Button
-        android:id="@+id/login"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
+        android:text="Sign Up"
         android:background="@drawable/roundedbtn"
-        android:text="Login"
         android:textColor="@color/white"
         android:layout_marginTop="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password"/>
 
-    <Button
-        android:id="@+id/testaccbtn"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/roundedbtn"
-        android:text="Join as Guest"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
 
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login" />
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Or"
-        android:textColor="@color/white"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/testaccbtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login" />
 </androidx.constraintlayout.widget.ConstraintLayout>

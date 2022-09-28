@@ -4,9 +4,10 @@
     package="com.bprj.stepapp">
 
     <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
 
     <application
-        android:label="Crypto Go"
+        android:label="Run Fast"
         android:allowBackup="true"
         android:icon="@mipmap/app_icon"
         android:roundIcon="@mipmap/app_round_icon"
@@ -24,6 +25,7 @@
         </activity>
         <activity android:name=".tab_activity"></activity>
         <activity android:name=".login_activity"></activity>
+        <activity android:name=".setting_activity"></activity>
 
     </application>
 
