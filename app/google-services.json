@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1064844076267",
+    "project_id": "movestep-bd7d3",
+    "storage_bucket": "movestep-bd7d3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1064844076267:android:1a4fb49beaa189a14d8aae",
+        "android_client_info": {
+          "package_name": "com.bprj.stepapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1064844076267-vlvb4stvh7ith9uv94da25gmkas2jrdu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7eLLVnnBl_wZsH_SHU5rIL1_vECNssMI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1064844076267-vlvb4stvh7ith9uv94da25gmkas2jrdu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

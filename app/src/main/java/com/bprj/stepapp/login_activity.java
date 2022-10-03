@@ -21,9 +21,14 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bprj.stepapp.Member.DAOMember;
+import com.bprj.stepapp.Member.member;
+
+import java.lang.reflect.Member;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -44,6 +49,22 @@ public class login_activity extends AppCompatActivity{
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
         setContentView(R.layout.login_activity);
+
+        final EditText gmail = findViewById(R.id.gmail);
+        final EditText password = findViewById(R.id.password);
+        final Button login = findViewById(R.id.login);
+        DAOMember dao  = new DAOMember();
+        login.setOnClickListener(v ->
+        {
+            member m = new member(gmail.getText().toString(), password.getText().toString());
+            dao.add(m).addOnSuccessListener(suc ->
+            {
+                Toast.makeText(this, "Record is inserted", Toast.LENGTH_SHORT).show();
+            }).addOnFailureListener(er ->
+            {
+                Toast.makeText(this, ""+er.getMessage(), Toast.LENGTH_SHORT).show();
+            });
+        });
 
         test = findViewById(R.id.testaccbtn);
 
