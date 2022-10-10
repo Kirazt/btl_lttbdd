@@ -1,5 +1,6 @@
 package com.bprj.stepapp;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -24,9 +25,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.bprj.stepapp.Member.DAOMember;
-import com.bprj.stepapp.Member.member;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.lang.reflect.Member;
 import java.nio.charset.StandardCharsets;
@@ -36,11 +39,13 @@ import java.text.DecimalFormat;
 import java.util.UUID;
 
 public class login_activity extends AppCompatActivity{
-
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://movestep-bd7d3-default-rtdb.firebaseio.com/");
     public static final String SHARED_PREFS = "sharedPrefs";
     Boolean isnew= false;
     String acc_id;
-    Button test;
+    Button test,login;
+    EditText username, password;
+    TextView signup;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,45 +55,81 @@ public class login_activity extends AppCompatActivity{
         getSupportActionBar().hide();
         setContentView(R.layout.login_activity);
 
-        final EditText gmail = findViewById(R.id.gmail);
-        final EditText password = findViewById(R.id.password);
-        final Button login = findViewById(R.id.login);
-        DAOMember dao  = new DAOMember();
-        login.setOnClickListener(v ->
-        {
-            member m = new member(gmail.getText().toString(), password.getText().toString());
-            dao.add(m).addOnSuccessListener(suc ->
-            {
-                Toast.makeText(this, "Record is inserted", Toast.LENGTH_SHORT).show();
-            }).addOnFailureListener(er ->
-            {
-                Toast.makeText(this, ""+er.getMessage(), Toast.LENGTH_SHORT).show();
-            });
+        username = findViewById(R.id.username);
+        password = findViewById(R.id.password);
+        login = findViewById(R.id.login);
+        signup = findViewById(R.id.signuplink);
+
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(username.getText().toString().isEmpty() || password.getText().toString().isEmpty())
+                {
+                    Toast.makeText(login_activity.this, "Please enter your username or password.", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    databaseReference.child("user").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if(snapshot.hasChild(username.getText().toString())){
+                                final String getPassword = snapshot.child(username.getText().toString()).child("password").getValue(String.class);
+                                if(getPassword.equals(password.getText().toString()))
+                                {
+                                    Intent i = new Intent(login_activity.this, tab_activity.class);
+                                    startActivity(i);
+                                    finish();
+                                }
+                                else
+                                {
+                                    Toast.makeText(login_activity.this, "Wrong password", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                            else
+                            {
+                                Toast.makeText(login_activity.this, "Username is not exist", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+                }
+            }
+        });
+
+        signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(login_activity.this, register_activity.class);
+                startActivity(i);
+                finish();
+            }
         });
 
         test = findViewById(R.id.testaccbtn);
-
         test.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    loadData();
-                    if (acc_id == null||acc_id.isEmpty()) {
-                        acc_id = UUID.randomUUID().toString();
-                        isnew = true;
-                        saveData();
-                        Intent i = new Intent(login_activity.this, tab_activity.class);
-                        startActivity(i);
-                        finish();
-                    } else {
-                        isnew = true;
-                        saveData();
-                        Intent i = new Intent(login_activity.this, tab_activity.class);
-                        startActivity(i);
-                        finish();
-                    }
+            @Override
+            public void onClick(View view) {
+                loadData();
+                if (acc_id == null || acc_id.isEmpty()) {
+                    acc_id = UUID.randomUUID().toString();
+                    isnew = true;
+                    saveData();
+                    Intent i = new Intent(login_activity.this, tab_activity.class);
+                    startActivity(i);
+                    finish();
+                } else {
+                    isnew = true;
+                    saveData();
+                    Intent i = new Intent(login_activity.this, tab_activity.class);
+                    startActivity(i);
+                    finish();
                 }
             }
-          );
+        });
     }
 
     public void saveData(){

@@ -21,12 +21,12 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <EditText
-        android:id="@+id/gmail"
+        android:id="@+id/username"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginTop="50dp"
         android:textAlignment="textStart"
-        android:hint="Gmail"
+        android:hint="Username"
         android:textColorHint="@color/white"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
@@ -40,11 +40,12 @@
         android:layout_marginTop="50dp"
         android:textAlignment="textStart"
         android:hint="Password"
+        android:inputType="textPassword"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gmail" />
+        app:layout_constraintTop_toBottomOf="@+id/username" />
 
     <TextView
         android:id="@+id/textView"
@@ -72,7 +73,7 @@
         android:background="@drawable/roundedbtn"
         android:text="Login"
         android:textColor="@color/white"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="80dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password"/>
