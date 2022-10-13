@@ -35,9 +35,23 @@
         <entry key="..\:/Users/luanh/Desktop/btl_lttbdd/app/src/main/res/layout/register_activity.xml" value="0.20179563916203505" />
         <entry key="..\:/Users/luanh/Desktop/btl_lttbdd/app/src/main/res/layout/setting_activity.xml" value="0.20179563916203505" />
         <entry key="..\:/btl_lttbdd/app/src/main/res/layout/account_activity.xml" value="0.35833333333333334" />
+        <entry key="..\:/btl_lttbdd/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/btl_lttbdd/app/src/main/res/layout/card_item.xml" value="0.25" />
+        <entry key="..\:/btl_lttbdd/app/src/main/res/layout/carditem_horizontal.xml" value="0.25" />
+        <entry key="..\:/btl_lttbdd/app/src/main/res/layout/deposit_dialog.xml" value="0.25" />
+        <entry key="..\:/btl_lttbdd/app/src/main/res/layout/item_category.xml" value="0.10989583333333333" />
+        <entry key="..\:/btl_lttbdd/app/src/main/res/layout/itembag_activity.xml" value="0.10989583333333333" />
+        <entry key="..\:/btl_lttbdd/app/src/main/res/layout/items_activity.xml" value="0.25" />
         <entry key="..\:/btl_lttbdd/app/src/main/res/layout/login_activity.xml" value="0.35833333333333334" />
         <entry key="..\:/btl_lttbdd/app/src/main/res/layout/logout_dialog.xml" value="0.35833333333333334" />
+        <entry key="..\:/btl_lttbdd/app/src/main/res/layout/ranking_activity.xml" value="0.25" />
         <entry key="..\:/btl_lttbdd/app/src/main/res/layout/register_activity.xml" value="0.35833333333333334" />
+        <entry key="..\:/btl_lttbdd/app/src/main/res/layout/setting_activity.xml" value="0.25" />
+        <entry key="..\:/btl_lttbdd/app/src/main/res/layout/stepcounter_activity.xml" value="0.25" />
+        <entry key="..\:/btl_lttbdd/app/src/main/res/layout/support_activity.xml" value="0.25" />
+        <entry key="..\:/btl_lttbdd/app/src/main/res/layout/tab_activity.xml" value="0.25" />
+        <entry key="..\:/btl_lttbdd/app/src/main/res/layout/useitem_dialog.xml" value="0.25" />
+        <entry key="..\:/btl_lttbdd/app/src/main/res/layout/user_ranking.xml" value="0.25" />
         <entry key="..\:/project/stepapp/app/src/main/res/drawable/account_profile.xml" value="0.234" />
         <entry key="..\:/project/stepapp/app/src/main/res/drawable/bigspace.xml" value="0.234" />
         <entry key="..\:/project/stepapp/app/src/main/res/drawable/currentprogress.xml" value="0.234" />

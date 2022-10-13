@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
 import com.bprj.stepapp.Item.items_activity;
+import com.bprj.stepapp.ranking.ranking_activity;
 
 public class TabAdapter extends FragmentStatePagerAdapter {
 
@@ -20,7 +21,7 @@ public class TabAdapter extends FragmentStatePagerAdapter {
             case 0:
                 return new StepCounter_Activity();
             case 1:
-                return new items_activity();
+                return new ranking_activity();
             case 2:
                 return new account_activity();
             case 3:
