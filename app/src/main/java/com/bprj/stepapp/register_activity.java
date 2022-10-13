@@ -18,6 +18,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import at.favre.lib.crypto.bcrypt.BCrypt;
+
 public class register_activity extends AppCompatActivity {
 
 
@@ -50,6 +52,7 @@ public class register_activity extends AppCompatActivity {
                 }
                 else
                 {
+                    String hashpass = BCrypt.withDefaults().hashToString(12, password.getText().toString().toCharArray());
                     databaseReference.child("user").addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -60,7 +63,7 @@ public class register_activity extends AppCompatActivity {
                             {
                                 databaseReference.child("user").child(username.getText().toString()).child("fullname").setValue(fullname.getText().toString());
                                 databaseReference.child("user").child(username.getText().toString()).child("gmail").setValue(gmail.getText().toString());
-                                databaseReference.child("user").child(username.getText().toString()).child("password").setValue(password.getText().toString());
+                                databaseReference.child("user").child(username.getText().toString()).child("password").setValue(hashpass);
 
                                 Toast.makeText(register_activity.this, "User registered successfully", Toast.LENGTH_SHORT).show();
                             }

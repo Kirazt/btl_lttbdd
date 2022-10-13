@@ -38,6 +38,8 @@ import java.security.NoSuchAlgorithmException;
 import java.text.DecimalFormat;
 import java.util.UUID;
 
+import at.favre.lib.crypto.bcrypt.BCrypt;
+
 public class login_activity extends AppCompatActivity{
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://movestep-bd7d3-default-rtdb.firebaseio.com/");
     public static final String SHARED_PREFS = "sharedPrefs";
@@ -74,7 +76,7 @@ public class login_activity extends AppCompatActivity{
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             if(snapshot.hasChild(username.getText().toString())){
                                 final String getPassword = snapshot.child(username.getText().toString()).child("password").getValue(String.class);
-                                if(getPassword.equals(password.getText().toString()))
+                                if(BCrypt.verifyer().verify(password.getText().toString().toCharArray(),getPassword).verified)
                                 {
                                     Intent i = new Intent(login_activity.this, tab_activity.class);
                                     startActivity(i);
