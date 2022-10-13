@@ -32,7 +32,7 @@ public class ranking_activity extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.ranking_activity, container, false);
         RecyclerView recyclerViewview = view.findViewById(R.id.rankinguser);
-        ranking_adapter = new ranking_adapter(getListRank(), getContext());
+        ranking_adapter = new ranking_adapter();
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false);
         recyclerViewview.setLayoutManager(linearLayoutManager);
         ranking_adapter.setData(getListRank());
@@ -41,7 +41,7 @@ public class ranking_activity extends Fragment {
     }
     public List<rank> getListRank(){
         List<rank> r = new ArrayList<>();
-        r.add(new rank("cc",0));
+        r.add(new rank("cc",10));
         r.add(new rank("cc",0));
         r.add(new rank("cc",0));
         r.add(new rank("cc",0));
