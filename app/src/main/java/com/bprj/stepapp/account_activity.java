@@ -10,6 +10,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -21,15 +22,27 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bprj.stepapp.R;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.Locale;
 
 public class account_activity extends Fragment {
 
     Button withdrawbtn, depositbtn, logoutbtn;
     Dialog dialog;
     TextView tokentext, acc_id;
+    private DatabaseReference mDatabase;
     String accid;
     boolean isnew= false;
     public static final String SHARED_PREFS = "sharedPrefs";
+    FirebaseUser user;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -43,6 +56,7 @@ public class account_activity extends Fragment {
         tokentext = view.findViewById(R.id.tokentext);
         acc_id = view.findViewById(R.id.acc_id);
         dialog = new Dialog(getActivity());
+        user = FirebaseAuth.getInstance().getCurrentUser();
 
         withdrawbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,13 +83,15 @@ public class account_activity extends Fragment {
 
     @Override
     public void onResume() {
-        SharedPreferences prefs = getActivity().getSharedPreferences(SHARED_PREFS , MODE_PRIVATE);
-        int restoredText = prefs.getInt("score", 0);
-        accid = prefs.getString("acc_id", null);
-        saveData();
 
-        acc_id.setText(accid);
-        tokentext.setText(String.valueOf(restoredText));
+            SharedPreferences prefs = getActivity().getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+            int restoredText = prefs.getInt("score", 0);
+            accid = prefs.getString("acc_id", null);
+            saveData();
+
+            acc_id.setText(accid);
+            tokentext.setText(String.valueOf(restoredText));
+
         super.onResume();
     }
 

@@ -20,21 +20,9 @@
             android:textStyle="bold"
             android:textColor="@color/white"
             />
+
         <EditText
-            android:layout_marginTop="20dp"
-            android:layout_width="300dp"
-            android:layout_height="40dp"
-            android:hint="Name"
-            android:paddingLeft="10dp"
-            android:background="@color/gray"/>
-        <EditText
-            android:layout_marginTop="20dp"
-            android:layout_width="300dp"
-            android:paddingLeft="10dp"
-            android:layout_height="40dp"
-            android:hint="Email"
-            android:background="@color/gray"/>
-        <EditText
+            android:id="@+id/subject"
             android:layout_marginTop="20dp"
             android:layout_width="300dp"
             android:layout_height="60dp"
@@ -43,6 +31,7 @@
             android:hint="Topic"
             android:background="@color/gray"/>
         <EditText
+            android:id="@+id/body"
             android:gravity="top"
             android:paddingLeft="10dp"
             android:layout_marginTop="20dp"
@@ -52,6 +41,7 @@
             android:background="@color/gray"/>
 
         <Button
+            android:id="@+id/sendmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAllCaps="false"

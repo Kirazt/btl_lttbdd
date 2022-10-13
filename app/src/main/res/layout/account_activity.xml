@@ -50,7 +50,7 @@
                             android:layout_marginLeft="20dp"
                             android:textSize="20dp"
                             android:textColor="@color/white"
-                            android:text="Id:"/>
+                            android:text="Name:"/>
                         <TextView
                             android:id="@+id/acc_id"
                             android:maxLines="1"
@@ -74,7 +74,7 @@
                             android:layout_marginLeft="20dp"
                             android:textSize="20dp"
                             android:textColor="@color/white"
-                            android:text="Balance:"/>
+                            android:text="Step:"/>
                         <TextView
                             android:id="@+id/tokentext"
                             android:layout_width="wrap_content"
@@ -89,6 +89,7 @@
             <ImageView
                 android:layout_width="150dp"
                 android:layout_height="50dp"
+                android:visibility="gone"
                 android:layout_marginTop="20dp"
                 android:src="@drawable/linkreferer"/>
 
@@ -152,6 +153,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:visibility="gone"
                 android:layout_marginTop="200px"
                 android:layout_marginBottom="300px"
                 android:orientation="vertical">
@@ -181,15 +183,15 @@
                         android:background="@drawable/roundedbtn"/>
 
                 </LinearLayout>
-                <Button
-                    android:id="@+id/logoutbtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="10dp"
-                    android:text="Log out"
-                    android:textColor="@color/pink"
-                    android:background="@drawable/roundblackbtn"/>
             </LinearLayout>
+            <Button
+                android:id="@+id/logoutbtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:text="Log out"
+                android:textColor="@color/pink"
+                android:background="@drawable/roundblackbtn"/>
         </LinearLayout>
     </ScrollView>
 
