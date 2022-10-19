@@ -38,9 +38,10 @@
 
               </androidx.recyclerview.widget.RecyclerView>
           </LinearLayout>
+
     <Button
+        android:id="@+id/update"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nhan nut"
-        android:id="@+id/update"></Button>
+        android:text="Nhan nut"></Button>
 </FrameLayout>

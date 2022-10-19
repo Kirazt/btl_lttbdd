@@ -1,19 +1,15 @@
 package com.bprj.stepapp.ranking;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bprj.stepapp.Item.item;
-import com.bprj.stepapp.ranking.rank;
 import com.bprj.stepapp.R;
 
 import java.util.List;
@@ -30,7 +26,7 @@ public class ranking_adapter extends RecyclerView.Adapter<ranking_adapter.rankVi
     @NonNull
     @Override
     public rankViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.user_ranking, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(com.bprj.stepapp.R.layout.user_ranking, parent, false);
         return new rankViewHolder(view);
     }
 

@@ -20,6 +20,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,6 +45,7 @@ public class StepCounter_Activity extends Fragment implements SensorEventListene
     TextView step,score, currentday, preday3, preday2, preday1, curday, nxday1, nxday2, nxday3, buffstatus,info;
     SensorManager sensorManager;
     Sensor msensor;
+
     boolean run = false;
     int stepcount = 0;
     int prestep= 0;
@@ -186,7 +188,7 @@ public class StepCounter_Activity extends Fragment implements SensorEventListene
 
     public void loadData(){
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences(SHARED_PREFS,Context.MODE_PRIVATE);
-        int stepsave = sharedPreferences.getInt(STEP, 0);
+        int stepsave = sharedPreferences.getInt("stepmove", 0);
         Log.i("step", String.valueOf(stepsave));
         int scoresave = sharedPreferences.getInt(SCORE, 0);
 

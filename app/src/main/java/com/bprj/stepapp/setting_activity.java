@@ -25,7 +25,7 @@ public class setting_activity extends AppCompatActivity {
     public static final String SHARED_PREFS = "sharedPrefs";
     Switch notifiswicth;
     TextView point_tv, accid_tv, step_tv,logout,privacy_tv, faq_tv;
-    String acc_id;
+    String acc_id, name;
     Button back;
     boolean notifistatus = true, isnew = true;
     Dialog dialog;
@@ -127,6 +127,7 @@ public class setting_activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 isnew =false;
+                name = "";
                 saveData();
                 Intent i = new Intent(setting_activity.this, login_activity.class);
                 startActivity(i);
@@ -140,6 +141,7 @@ public class setting_activity extends AppCompatActivity {
 
         editor.putBoolean("notifi",notifistatus);
         editor.putBoolean("isnew", isnew);
+        editor.putString("name", name);
         editor.apply();
     };
     public void loadData(){
@@ -148,5 +150,6 @@ public class setting_activity extends AppCompatActivity {
         step = sharedPreferences.getInt("step", 0);
         scoresave = sharedPreferences.getInt("score", 0);
         acc_id = sharedPreferences.getString("acc_id", null);
+        name = sharedPreferences.getString("name",null);
     }
 }

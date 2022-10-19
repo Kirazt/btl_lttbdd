@@ -23,8 +23,6 @@ import android.widget.TextView;
 
 import com.bprj.stepapp.R;
 import com.google.firebase.FirebaseApp;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -37,26 +35,25 @@ public class account_activity extends Fragment {
 
     Button withdrawbtn, depositbtn, logoutbtn;
     Dialog dialog;
-    TextView tokentext, acc_id;
+    TextView tokentext, accid;
+    int stepmove = 0;
     private DatabaseReference mDatabase;
-    String accid;
-    boolean isnew= false;
+    String acc_id, name;
+    boolean isnew = false;
     public static final String SHARED_PREFS = "sharedPrefs";
-    FirebaseUser user;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.account_activity, container, false);
-
+        loadData();
 
         withdrawbtn = view.findViewById(R.id.withdrawbtn);
         depositbtn = view.findViewById(R.id.depositbtn);
         logoutbtn = view.findViewById(R.id.logoutbtn);
         tokentext = view.findViewById(R.id.tokentext);
-        acc_id = view.findViewById(R.id.acc_id);
+        accid = view.findViewById(R.id.acc_id);
         dialog = new Dialog(getActivity());
-        user = FirebaseAuth.getInstance().getCurrentUser();
 
         withdrawbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,13 +81,12 @@ public class account_activity extends Fragment {
     @Override
     public void onResume() {
 
-            SharedPreferences prefs = getActivity().getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
-            int restoredText = prefs.getInt("score", 0);
-            accid = prefs.getString("acc_id", null);
-            saveData();
-
-            acc_id.setText(accid);
-            tokentext.setText(String.valueOf(restoredText));
+        SharedPreferences prefs = getActivity().getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        int restoredText = prefs.getInt("stepmove", 0);
+        acc_id = prefs.getString("acc_id", null);
+        name = prefs.getString("name", null);
+        accid.setText(name);
+        tokentext.setText(String.valueOf(restoredText));
 
         super.onResume();
     }
@@ -129,7 +125,7 @@ public class account_activity extends Fragment {
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         ImageView imageView = dialog.findViewById(R.id.closelogoutdialog);
-        Button accpetlogout= dialog.findViewById(R.id.logoutbtn);
+        Button accpetlogout = dialog.findViewById(R.id.logoutbtn);
         Button cancel = dialog.findViewById(R.id.cancelbtn);
 
         imageView.setOnClickListener(new View.OnClickListener() {
@@ -147,7 +143,9 @@ public class account_activity extends Fragment {
         accpetlogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                isnew =false;
+                isnew = false;
+                name = "";
+                stepmove = 0;
                 saveData();
                 Intent i = new Intent(getActivity(), login_activity.class);
                 startActivity(i);
@@ -184,12 +182,24 @@ public class account_activity extends Fragment {
         });
         dialog.show();
     }
-    public void saveData(){
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(SHARED_PREFS,Context.MODE_PRIVATE);
+
+    public void saveData() {
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
-        editor.putString("acc_id", accid);
+        editor.putString("acc_id", acc_id);
         editor.putBoolean("isnew", isnew);
+        editor.putString("name", name);
+        editor.putInt("stepmove", stepmove);
         editor.apply();
-    };
+    }
+
+    ;
+
+    public void loadData() {
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
+        acc_id = sharedPreferences.getString("acc_id", null);
+        name = sharedPreferences.getString("name", null);
+        stepmove = sharedPreferences.getInt("stepmove", 0);
+    }
 }

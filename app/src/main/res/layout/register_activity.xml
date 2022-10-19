@@ -15,7 +15,7 @@
         android:text="Register"
         android:textColor="@color/white"
         android:textSize="30dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -24,7 +24,7 @@
         android:id="@+id/fullname"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:hint="Full name"
         android:textAlignment="textStart"
         android:textColor="@color/white"
@@ -37,7 +37,7 @@
         android:id="@+id/username"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:hint="Username"
         android:textAlignment="textStart"
         android:textColor="@color/white"
@@ -51,7 +51,7 @@
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:textAlignment="textStart"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:hint="Gmail"
         android:textColorHint="@color/white"
         android:textColor="@color/white"
@@ -60,10 +60,106 @@
         app:layout_constraintTop_toBottomOf="@+id/username" />
 
     <EditText
+        android:id="@+id/age"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:textAlignment="textStart"
+        android:layout_marginTop="20dp"
+        android:hint="Age"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gmail" />
+    <RadioGroup
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:paddingTop="10dp"
+        android:paddingLeft="120dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gmail"
+
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/radio_male"
+            android:text="Male"
+            android:layout_weight="1"
+            android:checked="true"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            app:buttonTint="#ffffff"
+            />
+        <RadioButton
+            android:id="@+id/radio_female"
+            android:text="Female"
+            android:layout_weight="1"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            app:buttonTint="#ffffff"
+            />
+
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/height"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:textAlignment="textStart"
+        android:layout_marginTop="20dp"
+        android:hint="Height"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/age" />
+
+    <TextView
+        android:id="@+id/textViewHeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="-30dp"
+        android:layout_marginTop="20dp"
+        android:text="cm"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.861"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/height" />
+
+    <EditText
+        android:id="@+id/weight"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:textAlignment="textStart"
+        android:layout_marginTop="20dp"
+        android:hint="Weight"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/height" />
+
+    <TextView
+        android:id="@+id/textViewWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="-30dp"
+        android:layout_marginTop="20dp"
+        android:text="kg"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.861"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/weight" />
+    <EditText
         android:id="@+id/password"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:textAlignment="textStart"
         android:inputType="textPassword"
         android:hint="Password"
@@ -71,13 +167,13 @@
         android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gmail" />
+        app:layout_constraintTop_toBottomOf="@+id/weight" />
 
     <EditText
         android:id="@+id/conpassword"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:textAlignment="textStart"
         android:inputType="textPassword"
         android:hint="Confirm password"
@@ -93,10 +189,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Have an account ?  "
+        android:layout_marginLeft="-30dp"
+        android:layout_marginTop="5dp"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/conpassword" />
+        app:layout_constraintTop_toBottomOf="@+id/button" />
 
     <TextView
         android:id="@+id/signinlink"
@@ -111,7 +209,7 @@
         android:id="@+id/button"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/roundedbtn"
         android:text="Sign Up"
         android:textColor="@color/white"

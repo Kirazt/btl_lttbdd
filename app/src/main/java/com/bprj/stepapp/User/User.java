@@ -5,12 +5,12 @@ public class User {
     private String fullname;
     private String username;
     private String password;
-    private String stepmove;
+    private int stepmove;
 
     public User() {
     }
 
-    public User(String gmail, String fullname, String username, String password, String stepmove) {
+    public User(String gmail, String fullname, String username, String password, int stepmove) {
         this.gmail = gmail;
         this.fullname = fullname;
         this.username = username;
@@ -50,11 +50,11 @@ public class User {
         this.password = password;
     }
 
-    public String getStepmove() {
+    public int getStepmove() {
         return stepmove;
     }
 
-    public void setStepmove(String stepmove) {
+    public void setStepmove(int stepmove) {
         this.stepmove = stepmove;
     }
 }

@@ -7,6 +7,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.NumberPicker;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
@@ -21,7 +23,6 @@ import com.google.firebase.database.ValueEventListener;
 import at.favre.lib.crypto.bcrypt.BCrypt;
 
 public class register_activity extends AppCompatActivity {
-
 
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://movestep-bd7d3-default-rtdb.firebaseio.com/");
     @Override
@@ -38,7 +39,13 @@ public class register_activity extends AppCompatActivity {
         final EditText password = findViewById(R.id.password);
         final EditText conpassword = findViewById(R.id.conpassword);
         final EditText username = findViewById(R.id.username);
+        final EditText age = findViewById(R.id.age);
+        final EditText height = findViewById(R.id.height);
+        final EditText weight = findViewById(R.id.weight);
+        final RadioButton male = findViewById(R.id.radio_male);
+        final RadioButton female = findViewById(R.id.radio_female);
         final Button register = findViewById(R.id.button);
+
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,8 +71,19 @@ public class register_activity extends AppCompatActivity {
                                 databaseReference.child("user").child(username.getText().toString()).child("fullname").setValue(fullname.getText().toString());
                                 databaseReference.child("user").child(username.getText().toString()).child("gmail").setValue(gmail.getText().toString());
                                 databaseReference.child("user").child(username.getText().toString()).child("password").setValue(hashpass);
-
+                                databaseReference.child("user").child(username.getText().toString()).child("age").setValue(age.getText().toString());
+                                databaseReference.child("user").child(username.getText().toString()).child("height").setValue(height.getText().toString());
+                                databaseReference.child("user").child(username.getText().toString()).child("weight").setValue(weight.getText().toString());
+                                if(male.isChecked()){
+                                    databaseReference.child("user").child(username.getText().toString()).child("gender").setValue("Male");
+                                }
+                                else {
+                                    databaseReference.child("user").child(username.getText().toString()).child("gender").setValue("Female");
+                                }
                                 Toast.makeText(register_activity.this, "User registered successfully", Toast.LENGTH_SHORT).show();
+                                Intent i = new Intent(register_activity.this, login_activity.class);
+                                startActivity(i);
+                                finish();
                             }
                         }
 
