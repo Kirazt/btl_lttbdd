@@ -26,6 +26,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bprj.stepapp.ranking.rank;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -90,7 +91,6 @@ public class login_activity extends AppCompatActivity {
                                     Toast.makeText(login_activity.this, "Username is not exist", Toast.LENGTH_SHORT).show();
                                 }
                             }
-
                             @Override
                             public void onCancelled(@NonNull DatabaseError error) {
                                 Log.e("E",error.toString());

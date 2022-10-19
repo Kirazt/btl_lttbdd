@@ -35,7 +35,7 @@ import java.util.List;
 
 public class ranking_activity extends Fragment {
     ranking_adapter ranking_adapter;
-    List<rank> r = new ArrayList<>();;
+    List<rank> r = new ArrayList<>();
     @Nullable
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -54,7 +54,6 @@ public class ranking_activity extends Fragment {
                             String name = postSnapshot.child("fullname").getValue(String.class);
                             int stepmove = postSnapshot.child("stepmove").getValue(int.class);
                             r.add(new rank(name, stepmove));
-
                         }
                         ranking_adapter.setData(r);
                     }
@@ -66,6 +65,7 @@ public class ranking_activity extends Fragment {
                 });
             }
         });
+        btn.performClick();
         RecyclerView recyclerViewview = view.findViewById(R.id.rankinguser);
         ranking_adapter = new ranking_adapter();
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);

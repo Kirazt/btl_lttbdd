@@ -32,19 +32,25 @@ import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 import com.bprj.stepapp.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class StepCounter_Activity extends Fragment implements SensorEventListener {
-
+    final FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference ref = database.getReferenceFromUrl("https://movestep-bd7d3-default-rtdb.firebaseio.com/");
     public static final String SHARED_PREFS = "sharedPrefs";
     public static final String SCORE = "score";
     public static final String STEP = "step";
     TextView step,score, currentday, preday3, preday2, preday1, curday, nxday1, nxday2, nxday3, buffstatus,info;
     SensorManager sensorManager;
     Sensor msensor;
+    String name;
 
     boolean run = false;
     int stepcount = 0;
@@ -106,6 +112,9 @@ public class StepCounter_Activity extends Fragment implements SensorEventListene
 
         //Text day in progressbar
 
+        ref.child("user").child(name).child("stepmove").setValue(5000);
+
+
         LocalDate date1 = LocalDate.now();
         curday.setText(String.valueOf(date1.getDayOfMonth()));
         preday1.setText(String.valueOf(date1.minusDays(1).getDayOfMonth()));
@@ -166,6 +175,10 @@ public class StepCounter_Activity extends Fragment implements SensorEventListene
             else fscore = fscore + ((currentstep * 10)+(currentstep*10)*buffintoscore/100);
             Log.e("buff",String.valueOf(currentstep));
             step.setText(""+String.valueOf(stepcount));
+            String link = name + "/stepmove";
+            Map<String, Object> stepmoveupdate = new HashMap<>();
+            stepmoveupdate.put(link,5000);
+            ref.updateChildren(stepmoveupdate);
             score.setText(""+String.valueOf(fscore));
             saveData();
         }
@@ -189,6 +202,7 @@ public class StepCounter_Activity extends Fragment implements SensorEventListene
     public void loadData(){
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences(SHARED_PREFS,Context.MODE_PRIVATE);
         int stepsave = sharedPreferences.getInt("stepmove", 0);
+        name = sharedPreferences.getString("name", null);
         Log.i("step", String.valueOf(stepsave));
         int scoresave = sharedPreferences.getInt(SCORE, 0);
 
