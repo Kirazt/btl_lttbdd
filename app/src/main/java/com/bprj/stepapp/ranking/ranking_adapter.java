@@ -32,7 +32,6 @@ public class ranking_adapter extends RecyclerView.Adapter<ranking_adapter.rankVi
 
     @Override
     public void onBindViewHolder(@NonNull rankViewHolder holder, int position) {
-        Log.e("da", String.valueOf(Lrank.size()));
         if (Lrank == null) {
             return;
         }

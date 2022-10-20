@@ -45,18 +45,18 @@ public class StepCounter_Activity extends Fragment implements SensorEventListene
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference ref = database.getReferenceFromUrl("https://movestep-bd7d3-default-rtdb.firebaseio.com/");
     public static final String SHARED_PREFS = "sharedPrefs";
-    public static final String SCORE = "score";
     public static final String STEP = "step";
     TextView step,score, currentday, preday3, preday2, preday1, curday, nxday1, nxday2, nxday3, buffstatus,info;
     SensorManager sensorManager;
+    SensorEvent sensorEvent;
     Sensor msensor;
     String name;
 
     boolean run = false;
     int stepcount = 0;
     int prestep= 0;
-    int fscore = stepcount * 10;
-    int buffintoscore;
+    int laststep=0;
+    int n=0;
 
 
     @Nullable
@@ -100,10 +100,9 @@ public class StepCounter_Activity extends Fragment implements SensorEventListene
             Toast.makeText(getActivity(),"Counter Sensor is not Present", Toast.LENGTH_SHORT).show();
             run = false;
         }
-
         loadData();
-        step.setText(""+String.valueOf(prestep));
-        score.setText(""+String.valueOf(fscore));
+        step.setText(""+String.valueOf(stepcount));
+        score.setText(""+String.valueOf(prestep));
 
         //Text currentday on top
         formatter = new SimpleDateFormat("EEEE, dd MMMM");
@@ -111,9 +110,6 @@ public class StepCounter_Activity extends Fragment implements SensorEventListene
         currentday.setText(strDate);
 
         //Text day in progressbar
-
-        ref.child("user").child(name).child("stepmove").setValue(5000);
-
 
         LocalDate date1 = LocalDate.now();
         curday.setText(String.valueOf(date1.getDayOfMonth()));
@@ -147,10 +143,6 @@ public class StepCounter_Activity extends Fragment implements SensorEventListene
         super.onResume();
         Sensor count = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
         SharedPreferences prefs = getActivity().getSharedPreferences(SHARED_PREFS , MODE_PRIVATE);
-        int buff = prefs.getInt("buffquantity", 0);
-        buffintoscore = buff*20;
-        Log.e("buff1",String.valueOf(buffintoscore));
-        buffstatus.setText("Buff rate: "+String.valueOf(buffintoscore) +"%");
         if(count!=null){
             sensorManager.registerListener(this, count,SensorManager.SENSOR_DELAY_UI);
         }
@@ -166,24 +158,18 @@ public class StepCounter_Activity extends Fragment implements SensorEventListene
     @Override
     public void onSensorChanged(SensorEvent sensorEvent) {
         if(run){
-            loadData();
-            stepcount = (int) (sensorEvent.values[0]);
-            int currentstep = stepcount - prestep;
-            if(buffintoscore==0){
-                fscore = fscore + (currentstep * 10);
-            }
-            else fscore = fscore + ((currentstep * 10)+(currentstep*10)*buffintoscore/100);
-            Log.e("buff",String.valueOf(currentstep));
-            step.setText(""+String.valueOf(stepcount));
-            String link = name + "/stepmove";
-            Map<String, Object> stepmoveupdate = new HashMap<>();
-            stepmoveupdate.put(link,5000);
-            ref.updateChildren(stepmoveupdate);
-            score.setText(""+String.valueOf(fscore));
+            laststep = (int) (sensorEvent.values[0]);
             saveData();
+            if(n>laststep){
+                stepcount = (int) (sensorEvent.values[0]);
+            }else{
+                stepcount = (int) (sensorEvent.values[0]) - n;
+            }
+            step.setText(""+String.valueOf(stepcount));
+            score.setText(""+String.valueOf(stepcount + prestep));
+            ref.child("user").child(name).child("stepmove").setValue(stepcount+ prestep);
         }
     }
-
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int i) {
@@ -194,21 +180,16 @@ public class StepCounter_Activity extends Fragment implements SensorEventListene
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences(SHARED_PREFS,Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
-        editor.putInt(STEP, stepcount);
-        editor.putInt(SCORE, fscore);
+        editor.putInt("last", laststep);
         editor.apply();
     };
 
     public void loadData(){
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences(SHARED_PREFS,Context.MODE_PRIVATE);
         int stepsave = sharedPreferences.getInt("stepmove", 0);
+        n = sharedPreferences.getInt("laststep",0);
         name = sharedPreferences.getString("name", null);
-        Log.i("step", String.valueOf(stepsave));
-        int scoresave = sharedPreferences.getInt(SCORE, 0);
-
         prestep =  stepsave;
-        Log.i("steplast", String.valueOf(stepcount));
-        fscore = scoresave;
     }
 
 

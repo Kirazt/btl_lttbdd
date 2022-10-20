@@ -42,13 +42,11 @@ public class tab_activity extends AppCompatActivity {
     private ViewPager viewPager;
     public static final String SHARED_PREFS = "sharedPrefs";
     private BottomNavigationView bottomNavigationView;
-    TextView step,score;
-    SensorManager sensorManager;
-    Sensor msensor;
+
     Button reset,setting_btn;
-    boolean run = false,notifistatus = true;
-    int stepcount = 0;
-    int fscore = 0;
+
+    public static final String SCORE = "score";
+    int n=0;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,6 +70,7 @@ public class tab_activity extends AppCompatActivity {
         TabAdapter adapter = new TabAdapter(getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         viewPager.setOffscreenPageLimit(2);
         viewPager.setAdapter(adapter);
+        saveData();
 
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -135,10 +134,14 @@ public class tab_activity extends AppCompatActivity {
 
     }
 
-    public void loadData(){
+    public void saveData(){
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS,Context.MODE_PRIVATE);
-        notifistatus = sharedPreferences.getBoolean("notifi",true);
-    }
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        n = sharedPreferences.getInt("last", 0);
+        editor.putInt("laststep", n);
+        editor.apply();
+
+    };
 
 
 
@@ -146,19 +149,9 @@ public class tab_activity extends AppCompatActivity {
     public void onDestroy() {
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.cancelAll();
+        saveData();
         super.onDestroy();
     }
 
-    //    @Override
-//    public void onBackPressed(){
-//        FragmentManager fm = getFragmentManager();
-//        if (fm.getBackStackEntryCount() > 1) {
-//            Log.i("MainActivity", "popping backstack");
-//            fm.popBackStack();
-//        } else {
-//            Log.i("MainActivity", "nothing on backstack, calling super");
-//            super.onBackPressed();
-//        }
-//    }
 
 }
