@@ -80,7 +80,6 @@ public class StepCounter_Activity extends Fragment implements SensorEventListene
         String strDate ;
         Dialog dialog = new Dialog(this.getActivity());
 
-        info =  getActivity().findViewById(R.id.buffstatus);
         curday = (TextView) getActivity().findViewById(R.id.curday);
         preday1 = (TextView) getActivity().findViewById(R.id.preday1);
         preday2 = (TextView) getActivity().findViewById(R.id.preday2);
@@ -88,7 +87,6 @@ public class StepCounter_Activity extends Fragment implements SensorEventListene
         nxday1 = (TextView) getActivity().findViewById(R.id.nxday1);
         nxday2 = (TextView) getActivity().findViewById(R.id.nxday2);
         nxday3 = (TextView) getActivity().findViewById(R.id.nxday3);
-        buffstatus = (TextView) getActivity().findViewById(R.id.buffstatus);
         step = (TextView) getActivity().findViewById(R.id.stepcounter);
         currentday = (TextView) getActivity().findViewById(R.id.currentday);
         score = (TextView) getActivity().findViewById(R.id.convertscore);

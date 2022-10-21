@@ -31,6 +31,11 @@
         android:alpha="0.7"
         app:itemIconSize="28dp"
         app:menu="@menu/menu_bottom_navigate">
+        <Button
+            android:id="@+id/updateinfo"
+            android:layout_width="1dp"
+            android:layout_height="1dp"
+            android:visibility="gone"/>
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 

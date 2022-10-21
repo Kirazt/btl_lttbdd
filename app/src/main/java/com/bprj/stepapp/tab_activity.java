@@ -31,6 +31,12 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.bprj.stepapp.Item.itembag_activity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -42,8 +48,8 @@ public class tab_activity extends AppCompatActivity {
     private ViewPager viewPager;
     public static final String SHARED_PREFS = "sharedPrefs";
     private BottomNavigationView bottomNavigationView;
-
-    Button reset,setting_btn;
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://movestep-bd7d3-default-rtdb.firebaseio.com/");
+    Button reset,setting_btn, updateinfo;
 
     public static final String SCORE = "score";
     int n=0;
@@ -63,7 +69,7 @@ public class tab_activity extends AppCompatActivity {
             }
         }
         setContentView(R.layout.tab_activity);
-
+        updateinfo = findViewById(R.id.updateinfo);
         viewPager = findViewById(R.id.viewpager);
         setting_btn = findViewById(R.id.setting_btn);
         bottomNavigationView = findViewById(R.id.navbottom);
@@ -132,6 +138,27 @@ public class tab_activity extends AppCompatActivity {
             }
         });
 
+        updateinfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                databaseReference.child("user").addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS,Context.MODE_PRIVATE);
+                        String username = sharedPreferences.getString("name", null);
+                        int stepmove = snapshot.child(username).child("stepmove").getValue(int.class);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putInt("stepmove",stepmove);
+                        editor.apply();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+            }
+        });
     }
 
     public void saveData(){

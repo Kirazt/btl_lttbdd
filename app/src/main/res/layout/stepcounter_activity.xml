@@ -239,43 +239,31 @@
             android:text="0"
             android:textSize="40dp"
             android:lines="1" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:fontFamily="@font/nunito_bold"
-            android:layout_marginTop="55dp"
+            android:layout_marginTop="35dp"
             android:textFontWeight="700"
             android:text="Total step:"
             android:textSize="15dp"
             android:lines="1" />
+
         <TextView
             android:id="@+id/convertscore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:fontFamily="@font/nunito_bold"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="55dp"
             android:textFontWeight="1000"
-            android:text="1 step = 1 token"
+            android:text="0"
             android:textSize="13dp"
             android:lines="1" />
 
-        <TextView
-            android:id="@+id/buffstatus"
-            android:layout_marginTop="200dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:fontFamily="@font/nunito_bold"
-            android:textColor="@color/white"
-            android:textFontWeight="700"
-            android:drawableRight="@drawable/ic_baseline_info_24"
-            android:drawablePadding="5dp"
-            android:text="Buff rate: 0%"
-            android:visibility="gone"
-            android:textSize="17dp"
-            android:lines="1" />
+
     </FrameLayout>
 
 </FrameLayout>
