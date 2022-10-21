@@ -46,7 +46,7 @@ public class login_activity extends AppCompatActivity {
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://movestep-bd7d3-default-rtdb.firebaseio.com/");
     public static final String SHARED_PREFS = "sharedPrefs";
     Boolean isnew = false;
-    String acc_id, name, fullname, gmail, age, height, weight, pass;
+    String acc_id, name, fullname, gmail, age, height, weight, pass, gender;
     int stepmove = 0;
     Button test, login;
     EditText username, password;
@@ -87,6 +87,7 @@ public class login_activity extends AppCompatActivity {
                                     height = snapshot.child(username.getText().toString()).child("height").getValue(String.class);
                                     weight = snapshot.child(username.getText().toString()).child("weight").getValue(String.class);
                                     pass = snapshot.child(username.getText().toString()).child("password").getValue(String.class);
+                                    gender = snapshot.child(username.getText().toString()).child("gender").getValue(String.class);
                                     islogin = true;
                                     saveData();
                                     Intent i = new Intent(login_activity.this, tab_activity.class);
@@ -154,6 +155,7 @@ public class login_activity extends AppCompatActivity {
         editor.putString("weight", weight);
         editor.putString("password", pass);
         editor.putBoolean("islogin", islogin);
+        editor.putString("gender", gender);
         editor.apply();
     }
 

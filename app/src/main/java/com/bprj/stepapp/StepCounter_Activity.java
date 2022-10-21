@@ -91,6 +91,8 @@ public class StepCounter_Activity extends Fragment implements SensorEventListene
         currentday = (TextView) getActivity().findViewById(R.id.currentday);
         score = (TextView) getActivity().findViewById(R.id.convertscore);
         sensorManager = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
+
+
         if(sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)!=null){
             msensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
             run = true;
@@ -165,6 +167,7 @@ public class StepCounter_Activity extends Fragment implements SensorEventListene
             }
             step.setText(""+String.valueOf(stepcount));
             score.setText(""+String.valueOf(stepcount + prestep));
+
             ref.child("user").child(name).child("stepmove").setValue(stepcount+ prestep);
         }
     }
