@@ -74,6 +74,7 @@ public class register_activity extends AppCompatActivity {
                                 databaseReference.child("user").child(username.getText().toString()).child("age").setValue(age.getText().toString());
                                 databaseReference.child("user").child(username.getText().toString()).child("height").setValue(height.getText().toString());
                                 databaseReference.child("user").child(username.getText().toString()).child("weight").setValue(weight.getText().toString());
+                                databaseReference.child("user").child(username.getText().toString()).child("stepmove").setValue(0);
                                 if(male.isChecked()){
                                     databaseReference.child("user").child(username.getText().toString()).child("gender").setValue("Male");
                                 }

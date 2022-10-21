@@ -240,6 +240,16 @@
             android:textSize="40dp"
             android:lines="1" />
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/nunito_bold"
+            android:layout_marginTop="55dp"
+            android:textFontWeight="700"
+            android:text="Total step:"
+            android:textSize="15dp"
+            android:lines="1" />
+        <TextView
             android:id="@+id/convertscore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
