@@ -121,21 +121,21 @@ public class StepCounter_Activity extends Fragment implements SensorEventListene
         nxday3.setText(String.valueOf(date1.plusDays(3).getDayOfMonth()));
         ////////////////////////////////
 
-        info.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialog.setContentView(R.layout.guide_introduction);
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                ImageView imageView = dialog.findViewById(R.id.closeitrodialog);
-                imageView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        dialog.dismiss();
-                    }
-                });
-                dialog.show();
-            }
-        });
+//        info.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                dialog.setContentView(R.layout.guide_introduction);
+//                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//                ImageView imageView = dialog.findViewById(R.id.closeitrodialog);
+//                imageView.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//                        dialog.dismiss();
+//                    }
+//                });
+//                dialog.show();
+//            }
+//        });
 
     }
     @Override

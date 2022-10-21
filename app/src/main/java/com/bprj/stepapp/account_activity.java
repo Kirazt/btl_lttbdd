@@ -20,6 +20,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,6 +48,7 @@ public class account_activity extends Fragment {
     boolean isnew = true;
     boolean islogin =true;
     public static final String SHARED_PREFS = "sharedPrefs";
+    LinearLayout editinfo,stepshow;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -55,6 +57,8 @@ public class account_activity extends Fragment {
         View view = inflater.inflate(R.layout.account_activity, container, false);
         loadData();
 
+        editinfo = view.findViewById(R.id.editinfo);
+        stepshow = view.findViewById(R.id.stepshow);
         withdrawbtn = view.findViewById(R.id.withdrawbtn);
         depositbtn = view.findViewById(R.id.depositbtn);
         logoutbtn = view.findViewById(R.id.logoutbtn);
@@ -72,6 +76,10 @@ public class account_activity extends Fragment {
         weightbtn = view.findViewById(R.id.weight_btn);
         changepassbtn = view.findViewById(R.id.changepassbtn);
         dialog = new Dialog(getActivity());
+        if(isnew==true) {
+            editinfo.setVisibility(View.GONE);
+            stepshow.setVisibility(View.GONE);
+        }
         withdrawbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
