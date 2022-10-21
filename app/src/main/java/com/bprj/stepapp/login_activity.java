@@ -46,7 +46,7 @@ public class login_activity extends AppCompatActivity {
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://movestep-bd7d3-default-rtdb.firebaseio.com/");
     public static final String SHARED_PREFS = "sharedPrefs";
     Boolean isnew = false;
-    String acc_id, name;
+    String acc_id, name, fullname, gmail, age, height, weight, pass;
     int stepmove = 0;
     Button test, login;
     EditText username, password;
@@ -72,30 +72,37 @@ public class login_activity extends AppCompatActivity {
                 if (username.getText().toString().isEmpty() || password.getText().toString().isEmpty()) {
                     Toast.makeText(login_activity.this, "Please enter your username or password.", Toast.LENGTH_SHORT).show();
                 } else {
-                        databaseReference.child("user").addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                if (snapshot.hasChild(username.getText().toString())) {
-                                    final String getPassword = snapshot.child(username.getText().toString()).child("password").getValue(String.class);
-                                    if (BCrypt.verifyer().verify(password.getText().toString().toCharArray(), getPassword).verified) {
-                                        name = username.getText().toString();
-                                        stepmove = snapshot.child(username.getText().toString()).child("stepmove").getValue(int.class);
-                                        saveData();
-                                        Intent i = new Intent(login_activity.this, tab_activity.class);
-                                        startActivity(i);
-                                        finish();
-                                    } else {
-                                        Toast.makeText(login_activity.this, "Wrong password", Toast.LENGTH_SHORT).show();
-                                    }
+                    databaseReference.child("user").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if (snapshot.hasChild(username.getText().toString())) {
+                                final String getPassword = snapshot.child(username.getText().toString()).child("password").getValue(String.class);
+                                if (BCrypt.verifyer().verify(password.getText().toString().toCharArray(), getPassword).verified) {
+                                    name = username.getText().toString();
+                                    fullname = snapshot.child(username.getText().toString()).child("fullname").getValue(String.class);
+                                    stepmove = snapshot.child(username.getText().toString()).child("stepmove").getValue(int.class);
+                                    gmail = snapshot.child(username.getText().toString()).child("gmail").getValue(String.class);
+                                    age = snapshot.child(username.getText().toString()).child("age").getValue(String.class);
+                                    height = snapshot.child(username.getText().toString()).child("height").getValue(String.class);
+                                    weight = snapshot.child(username.getText().toString()).child("weight").getValue(String.class);
+                                    pass = snapshot.child(username.getText().toString()).child("password").getValue(String.class);
+                                    saveData();
+                                    Intent i = new Intent(login_activity.this, tab_activity.class);
+                                    startActivity(i);
+                                    finish();
                                 } else {
-                                    Toast.makeText(login_activity.this, "Username is not exist", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(login_activity.this, "Wrong password", Toast.LENGTH_SHORT).show();
                                 }
+                            } else {
+                                Toast.makeText(login_activity.this, "Username is not exist", Toast.LENGTH_SHORT).show();
                             }
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {
-                                Log.e("E",error.toString());
-                            }
-                        });
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            Log.e("E", error.toString());
+                        }
+                    });
                 }
             }
         });
@@ -113,10 +120,14 @@ public class login_activity extends AppCompatActivity {
         test.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                loadData();
                 acc_id = UUID.randomUUID().toString();
                 isnew = true;
                 name = "Guest";
+                fullname = "Guest";
+                gmail = "No mail";
+                age = "0";
+                height = "0";
+                weight = "0";
                 stepmove = 0;
                 saveData();
                 Intent i = new Intent(login_activity.this, tab_activity.class);
@@ -134,15 +145,13 @@ public class login_activity extends AppCompatActivity {
         editor.putBoolean("isnew", isnew);
         editor.putString("name", name);
         editor.putInt("stepmove", stepmove);
+        editor.putString("fullname", fullname);
+        editor.putString("gmail", gmail);
+        editor.putString("age", age);
+        editor.putString("height", height);
+        editor.putString("weight", weight);
+        editor.putString("password", pass);
         editor.apply();
     }
 
-    ;
-
-    public void loadData() {
-        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
-        acc_id = sharedPreferences.getString("acc_id", null);
-        name = sharedPreferences.getString("name", null);
-        stepmove = sharedPreferences.getInt("stepmove", 0);
-    }
 }

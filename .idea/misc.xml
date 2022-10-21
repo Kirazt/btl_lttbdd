@@ -25,8 +25,15 @@
         <entry key="..\:/Download/stepapp/stepapp/app/src/main/res/layout/useitem_dialog.xml" value="0.26378794356562635" />
         <entry key="..\:/Download/stepapp/stepapp/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2345" />
         <entry key="..\:/Download/stepapp/stepapp/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2345" />
+        <entry key="..\:/LTDD/btl_lttbdd/app/src/main/res/drawable/show_password_selector.xml" value="0.2035" />
         <entry key="..\:/LTDD/btl_lttbdd/app/src/main/res/layout/account_activity.xml" value="0.25" />
         <entry key="..\:/LTDD/btl_lttbdd/app/src/main/res/layout/activity_main.xml" value="0.2359375" />
+        <entry key="..\:/LTDD/btl_lttbdd/app/src/main/res/layout/age_dialog.xml" value="0.24895833333333334" />
+        <entry key="..\:/LTDD/btl_lttbdd/app/src/main/res/layout/changepassword_dialog.xml" value="0.264" />
+        <entry key="..\:/LTDD/btl_lttbdd/app/src/main/res/layout/deposit_dialog.xml" value="0.25" />
+        <entry key="..\:/LTDD/btl_lttbdd/app/src/main/res/layout/fullname_dialog.xml" value="0.24895833333333334" />
+        <entry key="..\:/LTDD/btl_lttbdd/app/src/main/res/layout/gmail_dialog.xml" value="0.24895833333333334" />
+        <entry key="..\:/LTDD/btl_lttbdd/app/src/main/res/layout/height_dialog.xml" value="0.24895833333333334" />
         <entry key="..\:/LTDD/btl_lttbdd/app/src/main/res/layout/item_category.xml" value="0.25" />
         <entry key="..\:/LTDD/btl_lttbdd/app/src/main/res/layout/itembag_activity.xml" value="0.25" />
         <entry key="..\:/LTDD/btl_lttbdd/app/src/main/res/layout/login_activity.xml" value="0.2359375" />
@@ -38,6 +45,7 @@
         <entry key="..\:/LTDD/btl_lttbdd/app/src/main/res/layout/support_activity.xml" value="0.25" />
         <entry key="..\:/LTDD/btl_lttbdd/app/src/main/res/layout/tab_activity.xml" value="0.25" />
         <entry key="..\:/LTDD/btl_lttbdd/app/src/main/res/layout/user_ranking.xml" value="0.25" />
+        <entry key="..\:/LTDD/btl_lttbdd/app/src/main/res/layout/weight_dialog.xml" value="0.24895833333333334" />
         <entry key="..\:/LTDD/btl_lttbdd/app/src/main/res/menu/menu_bottom_navigate.xml" value="0.2359375" />
         <entry key="..\:/Users/luanh/Desktop/btl_lttbdd/app/src/main/res/layout/faq_dialog.xml" value="0.20179563916203505" />
         <entry key="..\:/Users/luanh/Desktop/btl_lttbdd/app/src/main/res/layout/login_activity.xml" value="0.20179563916203505" />

@@ -50,7 +50,7 @@
                             android:layout_marginLeft="20dp"
                             android:textSize="20dp"
                             android:textColor="@color/white"
-                            android:text="Name:"/>
+                            android:text="Username:"/>
                         <TextView
                             android:id="@+id/acc_id"
                             android:maxLines="1"
@@ -59,8 +59,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
                             android:textSize="20dp"
-                            android:textColor="@color/white"
-                            android:text="16122001..hn93d"/>
+                            android:textColor="@color/white" />
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -81,8 +80,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
                             android:textSize="20dp"
-                            android:textColor="@color/white"
-                            android:text="16000 tokens"/>
+                            android:textColor="@color/white" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
@@ -99,27 +97,165 @@
                 android:layout_gravity="center"
                 android:orientation="vertical">
 
-                <EditText
-                    android:id="@+id/username"
-                    android:layout_width="300dp"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="50dp"
-                    android:hint="Username"
-                    android:textAlignment="textStart"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/white"
-                    />
 
-                <EditText
-                    android:id="@+id/gmail"
+                <LinearLayout
                     android:layout_width="300dp"
                     android:layout_height="50dp"
-                    android:textAlignment="textStart"
-                    android:layout_marginTop="50dp"
-                    android:hint="Gmail"
-                    android:textColorHint="@color/white"
-                    android:textColor="@color/white"
-                    />
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20dp"
+                        android:textColor="@color/white"
+                        android:text="Fullname:"/>
+                    <TextView
+                        android:id="@+id/fullname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:textSize="18dp"
+                        android:textColor="@color/white" />
+                    <Button
+                        android:id="@+id/fullname_btn"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Edit"
+                        android:textColor="@color/purple_200"
+                        android:textSize="10dp"
+                        android:backgroundTint="@color/Transparent"
+                        android:background="@color/Transparent"
+                        android:gravity="right"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20dp"
+                        android:textColor="@color/white"
+                        android:text="Gmail:"/>
+                    <TextView
+                        android:id="@+id/gmail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:textSize="18dp"
+                        android:textColor="@color/white" />
+                    <Button
+                        android:id="@+id/gmail_btn"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Edit"
+                        android:backgroundTint="@color/Transparent"
+                        android:background="@color/Transparent"
+                        android:textColor="@color/purple_200"
+                        android:textSize="10dp"
+                        android:gravity="right"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20dp"
+                        android:textColor="@color/white"
+                        android:text="Age:"/>
+                    <TextView
+                        android:id="@+id/age"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:textSize="18dp"
+                        android:textColor="@color/white" />
+                    <Button
+                        android:id="@+id/age_btn"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Edit"
+                        android:backgroundTint="@color/Transparent"
+                        android:background="@color/Transparent"
+                        android:textColor="@color/purple_200"
+                        android:textSize="10dp"
+                        android:gravity="right"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20dp"
+                        android:textColor="@color/white"
+                        android:text="Height:"/>
+                    <TextView
+                        android:id="@+id/height"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:textSize="18dp"
+                        android:textColor="@color/white" />
+                    <Button
+                        android:id="@+id/height_btn"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Edit"
+                        android:backgroundTint="@color/Transparent"
+                        android:background="@color/Transparent"
+                        android:textColor="@color/purple_200"
+                        android:textSize="10dp"
+                        android:gravity="right"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20dp"
+                        android:textColor="@color/white"
+                        android:text="Weight:"/>
+                    <TextView
+                        android:id="@+id/weight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:textSize="18dp"
+                        android:textColor="@color/white" />
+                    <Button
+                        android:id="@+id/weight_btn"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Edit"
+                        android:backgroundTint="@color/Transparent"
+                        android:background="@color/Transparent"
+                        android:textColor="@color/purple_200"
+                        android:textSize="10dp"
+                        android:gravity="right"/>
+
+                </LinearLayout>
+
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -129,20 +265,13 @@
                     android:divider="@drawable/bigspace"
                     android:showDividers="middle"
                     android:orientation="horizontal">
+
                     <Button
-                        android:id="@+id/fixaccbtn"
+                        android:id="@+id/changepassbtn"
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:textAllCaps="false"
-                        android:text="Edit"
-                        android:textColor="@color/white"
-                        android:background="@drawable/roundedbtn"/>
-                    <Button
-                        android:id="@+id/removeaccbtn"
-                        android:layout_width="150dp"
-                        android:layout_height="wrap_content"
-                        android:textAllCaps="false"
-                        android:text="Remove Account"
+                        android:text="Change password"
                         android:textColor="@color/white"
                         android:background="@drawable/roundedbtn"/>
                 </LinearLayout>

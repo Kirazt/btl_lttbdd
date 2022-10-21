@@ -10,76 +10,90 @@
 
     <ImageView
         android:id="@+id/iconapp"
-        android:layout_marginBottom="350dp"
         android:layout_width="200dp"
         android:layout_height="150dp"
+        android:layout_marginBottom="350dp"
         android:src="@mipmap/app_icon_removebg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
 
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/username"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/usernamelayout"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginTop="50dp"
         android:textAlignment="textStart"
-        android:hint="Username"
-        android:textColorHint="@color/white"
-        android:textColor="@color/white"
+        android:textColorHint="@color/teal_200"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iconapp" />
+        app:layout_constraintTop_toBottomOf="@+id/iconapp">
 
-    <EditText
-        android:id="@+id/password"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Username"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/passwordlayput"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginTop="50dp"
         android:textAlignment="textStart"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
+        android:textColorHint="@color/teal_200"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/username" />
+        app:layout_constraintTop_toBottomOf="@+id/usernamelayout"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/white">
 
-
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/login"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:background="@drawable/roundedbtn"
         android:text="Login"
         android:textColor="@color/white"
         android:textSize="15dp"
-        android:layout_marginTop="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password"/>
+        app:layout_constraintTop_toBottomOf="@+id/passwordlayput" />
 
     <TextView
-    android:id="@+id/textView"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Don't have account ? "
-    android:layout_marginLeft="-40dp"
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="-40dp"
         android:layout_marginTop="6dp"
-    android:textColor="@color/white"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/login" />
+        android:text="Don't have account ? "
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login" />
 
     <TextView
         android:id="@+id/signuplink"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sign up"
         android:layout_marginTop="6dp"
+        android:text="Sign up"
         android:textColor="@color/gold"
         app:layout_constraintStart_toEndOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/login" />
@@ -104,9 +118,9 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:text="Or"
         android:textColor="@color/white"
-        android:layout_marginTop="20dp"
         android:textSize="20dp"
         app:layout_constraintBottom_toTopOf="@+id/testaccbtn"
         app:layout_constraintEnd_toEndOf="parent"

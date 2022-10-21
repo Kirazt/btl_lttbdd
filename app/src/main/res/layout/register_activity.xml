@@ -4,118 +4,154 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
-    >
+    android:background="@drawable/background">
 
     <TextView
         android:id="@+id/registertext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:fontFamily="@font/nunito_bold"
         android:text="Register"
         android:textColor="@color/white"
         android:textSize="30dp"
-        android:layout_marginTop="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/fullname"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/fullnamelayout"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:hint="Full name"
         android:textAlignment="textStart"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registertext" />
+        app:layout_constraintTop_toBottomOf="@+id/registertext">
 
-    <EditText
-        android:id="@+id/username"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/fullname"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@color/white" />
+        />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/usernamelayout"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:hint="Username"
         android:textAlignment="textStart"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fullname" />
+        app:layout_constraintTop_toBottomOf="@+id/fullnamelayout">
 
-    <EditText
-        android:id="@+id/gmail"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@color/white" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/gmaillayout"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:textAlignment="textStart"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:hint="Gmail"
-        android:textColorHint="@color/white"
+        android:textAlignment="textStart"
         android:textColor="@color/white"
+        android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/username" />
+        app:layout_constraintTop_toBottomOf="@+id/usernamelayout" >
 
-    <EditText
-        android:id="@+id/age"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/gmail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@color/white" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/agelayout"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:textAlignment="textStart"
         android:layout_marginTop="20dp"
         android:hint="Age"
-        android:textColorHint="@color/white"
+        android:textAlignment="textStart"
         android:textColor="@color/white"
+        android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gmail" />
+        app:layout_constraintTop_toBottomOf="@+id/gmaillayout" >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/age"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@color/white" />
+    </com.google.android.material.textfield.TextInputLayout>
+
     <RadioGroup
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        android:paddingTop="10dp"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal"
         android:paddingLeft="120dp"
+        android:paddingTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gmail"
 
-        android:orientation="horizontal">
+        app:layout_constraintTop_toBottomOf="@+id/gmaillayout">
+
         <RadioButton
             android:id="@+id/radio_male"
-            android:text="Male"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:checked="true"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
+            android:text="Male"
             android:textColor="@color/white"
-            app:buttonTint="#ffffff"
-            />
+            app:buttonTint="#ffffff" />
+
         <RadioButton
             android:id="@+id/radio_female"
-            android:text="Female"
-            android:layout_weight="1"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Female"
             android:textColor="@color/white"
-            app:buttonTint="#ffffff"
-            />
+            app:buttonTint="#ffffff" />
 
     </RadioGroup>
 
-    <EditText
-        android:id="@+id/height"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/heightlayout"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:textAlignment="textStart"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:hint="Height"
-        android:textColorHint="@color/white"
+        android:textAlignment="textStart"
         android:textColor="@color/white"
+        android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/age" />
+        app:layout_constraintTop_toBottomOf="@+id/agelayout" >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/height"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@color/white" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/textViewHeight"
@@ -128,21 +164,27 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.861"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/height" />
+        app:layout_constraintTop_toTopOf="@+id/heightlayout" />
 
-    <EditText
-        android:id="@+id/weight"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/weightlayout"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:textAlignment="textStart"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:hint="Weight"
-        android:textColorHint="@color/white"
+        android:textAlignment="textStart"
         android:textColor="@color/white"
+        android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/height" />
+        app:layout_constraintTop_toBottomOf="@+id/heightlayout" >
 
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/weight"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@color/white" />
+    </com.google.android.material.textfield.TextInputLayout>
     <TextView
         android:id="@+id/textViewWeight"
         android:layout_width="wrap_content"
@@ -154,43 +196,64 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.861"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/weight" />
-    <EditText
-        android:id="@+id/password"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        android:textAlignment="textStart"
-        android:inputType="textPassword"
-        android:hint="Password"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/weight" />
+        app:layout_constraintTop_toTopOf="@+id/weightlayout" />
 
-    <EditText
-        android:id="@+id/conpassword"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/passwordlayout"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        android:textAlignment="textStart"
+        android:layout_marginTop="15dp"
+        android:hint="Password"
         android:inputType="textPassword"
-        android:hint="Confirm password"
+        android:textAlignment="textStart"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
+        app:layout_constraintTop_toBottomOf="@+id/weightlayout"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/white">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="textPassword"
+            android:textColor="@color/white" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/conpasswordlayout"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="15dp"
+        android:hint="Confirm password"
+
+        android:textAlignment="textStart"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordlayout"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/white">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/conpassword"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="textPassword"
+            android:textColor="@color/white" />
+    </com.google.android.material.textfield.TextInputLayout>
 
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Have an account ?  "
         android:layout_marginLeft="-30dp"
         android:layout_marginTop="5dp"
+        android:text="Have an account ?  "
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -209,13 +272,13 @@
         android:id="@+id/button"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/roundedbtn"
         android:text="Sign Up"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/conpassword" />
+        app:layout_constraintTop_toBottomOf="@+id/conpasswordlayout" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
