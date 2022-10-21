@@ -3,6 +3,7 @@ package com.bprj.stepapp;
 import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -51,14 +52,16 @@ public class Support_Activity extends Fragment {
                     "please write something for us", Toast.LENGTH_SHORT).show();
         }
         else {
-            Intent email = new Intent(Intent.ACTION_SEND);
+            Intent email = new Intent(Intent.ACTION_SENDTO);
+            email.setData(Uri.parse("mailto:"));
+            email.setType("text/plain");
             email.putExtra(Intent.EXTRA_EMAIL, "1951012067luan@ou.edu.vn");
             email.putExtra(Intent.EXTRA_SUBJECT, subject.getText().toString());
             email.putExtra(Intent.EXTRA_TEXT, body.getText().toString());
-            try {
+            if(email.resolveActivity(getActivity().getPackageManager())!=null){
                 startActivity(Intent.createChooser(email, "Send mail..."));
                 Log.i("Finished sending...", "");
-            } catch (android.content.ActivityNotFoundException ex) {
+            } else {
                 Toast.makeText(view.getContext(),
                         "There is no email client installed.", Toast.LENGTH_SHORT).show();
             }

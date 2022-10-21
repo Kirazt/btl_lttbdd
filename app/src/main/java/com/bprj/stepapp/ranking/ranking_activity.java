@@ -31,6 +31,8 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class ranking_activity extends Fragment {
@@ -45,7 +47,7 @@ public class ranking_activity extends Fragment {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Query mquery = FirebaseDatabase.getInstance().getReference().child("user").orderByChild("stepmove").limitToLast(5);
+                Query mquery = FirebaseDatabase.getInstance().getReference().child("user").orderByChild("stepmove").limitToLast(10);
                 mquery.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -55,6 +57,7 @@ public class ranking_activity extends Fragment {
                             int stepmove = postSnapshot.child("stepmove").getValue(int.class);
                             r.add(new rank(name, stepmove));
                         }
+                        Collections.reverse(r);
                         ranking_adapter.setData(r);
                     }
 

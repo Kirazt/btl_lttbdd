@@ -44,7 +44,8 @@ public class account_activity extends Fragment {
     int stepmove = 0;
     private DatabaseReference mDatabase;
     String acc_id, name, fullname, gmail, age, height, weight, password;
-    boolean isnew = false;
+    boolean isnew = true;
+    boolean islogin =true;
     public static final String SHARED_PREFS = "sharedPrefs";
 
     @Override
@@ -439,6 +440,7 @@ public class account_activity extends Fragment {
             @Override
             public void onClick(View view) {
                 isnew = false;
+                islogin = false;
                 name = "";
                 stepmove = 0;
                 saveData();
@@ -486,6 +488,7 @@ public class account_activity extends Fragment {
         editor.putBoolean("isnew", isnew);
         editor.putString("name", name);
         editor.putInt("stepmove", stepmove);
+        editor.putBoolean("islogin", islogin);
         editor.apply();
     }
 
@@ -496,11 +499,11 @@ public void loadData(){
         acc_id=sharedPreferences.getString("acc_id",null);
         name=sharedPreferences.getString("name",null);
         stepmove=sharedPreferences.getInt("stepmove",0);
-        fullname=sharedPreferences.getString("fullname",null);
-        gmail=sharedPreferences.getString("gmail",null);
-        age=sharedPreferences.getString("age",null);
-        height=sharedPreferences.getString("height",null);
-        weight=sharedPreferences.getString("weight",null);
+        fullname=sharedPreferences.getString("fullname","empty");
+        gmail=sharedPreferences.getString("gmail","empty");
+        age=sharedPreferences.getString("age","empty");
+        height=sharedPreferences.getString("height","empty");
+        weight=sharedPreferences.getString("weight","empty");
 
         }
         }

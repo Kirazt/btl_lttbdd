@@ -51,6 +51,7 @@ public class login_activity extends AppCompatActivity {
     Button test, login;
     EditText username, password;
     TextView signup;
+    Boolean islogin = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,6 +87,7 @@ public class login_activity extends AppCompatActivity {
                                     height = snapshot.child(username.getText().toString()).child("height").getValue(String.class);
                                     weight = snapshot.child(username.getText().toString()).child("weight").getValue(String.class);
                                     pass = snapshot.child(username.getText().toString()).child("password").getValue(String.class);
+                                    islogin = true;
                                     saveData();
                                     Intent i = new Intent(login_activity.this, tab_activity.class);
                                     startActivity(i);
@@ -151,6 +153,7 @@ public class login_activity extends AppCompatActivity {
         editor.putString("height", height);
         editor.putString("weight", weight);
         editor.putString("password", pass);
+        editor.putBoolean("islogin", islogin);
         editor.apply();
     }
 

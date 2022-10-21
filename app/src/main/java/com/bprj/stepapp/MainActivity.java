@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity{
 
     public static final String SHARED_PREFS = "sharedPrefs";
     boolean isnew= false;
+    boolean islogin = false;
     private static int TIME_OUT = 2000;
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -42,7 +43,7 @@ public class MainActivity extends AppCompatActivity{
         setContentView(R.layout.activity_main);
 
         loadData();
-        if(isnew==false){
+        if( islogin==false && isnew==false){
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
@@ -65,7 +66,7 @@ public class MainActivity extends AppCompatActivity{
     public void loadData(){
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS,Context.MODE_PRIVATE);
         isnew = sharedPreferences.getBoolean("isnew", false);
-
-        Log.i("stepacc", String.valueOf(isnew));
+        islogin = sharedPreferences.getBoolean("islogin", false);
+        Log.e("dasd",String.valueOf(islogin));
     }
 }

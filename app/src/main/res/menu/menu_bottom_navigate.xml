@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:id="@+id/homebtn" android:title="Home" android:icon="@drawable/homico" />
-    <item android:id="@+id/itembtn" android:title="Items" android:icon="@drawable/itemsico"/>
+    <item android:id="@+id/itembtn" android:title="Rank" android:icon="@drawable/ranking"/>
     <item android:id="@+id/accbtn" android:title="Account" android:icon="@drawable/accountico"/>
     <item android:id="@+id/spbtn" android:title="Support" android:icon="@drawable/supportsico"/>
 </menu>
