@@ -157,4 +157,7 @@ public class login_activity extends AppCompatActivity {
         editor.apply();
     }
 
+    @Override
+    public void onBackPressed() {
+    }
 }
