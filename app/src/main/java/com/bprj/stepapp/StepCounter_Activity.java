@@ -87,7 +87,7 @@ public class StepCounter_Activity extends Fragment implements SensorEventListene
         nxday1 = (TextView) getActivity().findViewById(R.id.nxday1);
         nxday2 = (TextView) getActivity().findViewById(R.id.nxday2);
         nxday3 = (TextView) getActivity().findViewById(R.id.nxday3);
-        step = (TextView) getActivity().findViewById(R.id.stepcounter); 
+        step = (TextView) getActivity().findViewById(R.id.stepcounter);
         currentday = (TextView) getActivity().findViewById(R.id.currentday);
         score = (TextView) getActivity().findViewById(R.id.convertscore);
         sensorManager = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
