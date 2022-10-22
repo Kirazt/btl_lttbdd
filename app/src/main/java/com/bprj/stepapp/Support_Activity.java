@@ -54,8 +54,8 @@ public class Support_Activity extends Fragment {
         else {
             Intent email = new Intent(Intent.ACTION_SENDTO);
             email.setData(Uri.parse("mailto:"));
-            email.setType("text/plain");
-            email.putExtra(Intent.EXTRA_EMAIL, "1951012067luan@ou.edu.vn");
+            String[] address = {"1951012067luan@ou.edu.vn"};
+            email.putExtra(Intent.EXTRA_EMAIL, address );
             email.putExtra(Intent.EXTRA_SUBJECT, subject.getText().toString());
             email.putExtra(Intent.EXTRA_TEXT, body.getText().toString());
             if(email.resolveActivity(getActivity().getPackageManager())!=null){

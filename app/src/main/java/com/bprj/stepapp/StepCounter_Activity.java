@@ -141,8 +141,8 @@ public class StepCounter_Activity extends Fragment implements SensorEventListene
     @Override
     public void onResume() {
         super.onResume();
-        Sensor count = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
         SharedPreferences prefs = getActivity().getSharedPreferences(SHARED_PREFS , MODE_PRIVATE);
+        Sensor count = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
         if(count!=null){
             sensorManager.registerListener(this, count,SensorManager.SENSOR_DELAY_UI);
         }
