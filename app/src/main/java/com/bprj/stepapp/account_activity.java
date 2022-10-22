@@ -77,7 +77,12 @@ public class account_activity extends Fragment {
         changepassbtn = view.findViewById(R.id.changepassbtn);
         dialog = new Dialog(getActivity());
         if(name=="Guest") {
-            editinfo.setVisibility(View.GONE);
+            fullnamebtn.setVisibility(View.INVISIBLE);
+            gmailbtn.setVisibility(View.INVISIBLE);
+            agebtn.setVisibility(View.INVISIBLE);
+            heightbtn.setVisibility(View.INVISIBLE);
+            weightbtn.setVisibility(View.INVISIBLE);
+            changepassbtn.setVisibility(view.INVISIBLE);
             stepshow.setVisibility(View.GONE);
         }
         withdrawbtn.setOnClickListener(new View.OnClickListener() {
