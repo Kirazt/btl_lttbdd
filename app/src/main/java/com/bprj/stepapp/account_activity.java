@@ -76,7 +76,7 @@ public class account_activity extends Fragment {
         weightbtn = view.findViewById(R.id.weight_btn);
         changepassbtn = view.findViewById(R.id.changepassbtn);
         dialog = new Dialog(getActivity());
-        if(isnew==true) {
+        if(name=="Guest") {
             editinfo.setVisibility(View.GONE);
             stepshow.setVisibility(View.GONE);
         }

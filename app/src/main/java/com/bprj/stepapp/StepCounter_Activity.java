@@ -168,7 +168,7 @@ public class StepCounter_Activity extends Fragment implements SensorEventListene
             step.setText(""+String.valueOf(stepcount));
             score.setText(""+String.valueOf(stepcount + prestep));
 
-            ref.child("user").child(name).child("stepmove").setValue(stepcount+ prestep);
+            if(name!="Guest")ref.child("user").child(name).child("stepmove").setValue(stepcount+ prestep);
         }
     }
 
