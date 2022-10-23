@@ -89,6 +89,7 @@ public class login_activity extends AppCompatActivity {
                                         weight = snapshot.child(username.getText().toString()).child("weight").getValue(String.class);
                                         pass = snapshot.child(username.getText().toString()).child("password").getValue(String.class);
                                         gender = snapshot.child(username.getText().toString()).child("gender").getValue(String.class);
+                                        databaseReference.child("user").child(name).child("active").setValue(true);
                                         active = true;
                                         islogin = true;
                                         saveData();
