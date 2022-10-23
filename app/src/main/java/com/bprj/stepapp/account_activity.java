@@ -452,6 +452,7 @@ public class account_activity extends Fragment {
         accpetlogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                ref.child("user").child(accid.getText().toString()).child("active").setValue(false);
                 isnew = false;
                 islogin = false;
                 name = "";
@@ -503,7 +504,6 @@ public class account_activity extends Fragment {
         editor.putString("name", name);
         editor.putInt("stepmove", stepmove);
         editor.putBoolean("islogin", islogin);
-        editor.putBoolean("active", active);
         editor.apply();
     }
 

@@ -46,11 +46,12 @@ public class StepCounter_Activity extends Fragment implements SensorEventListene
     DatabaseReference ref = database.getReferenceFromUrl("https://movestep-bd7d3-default-rtdb.firebaseio.com/");
     public static final String SHARED_PREFS = "sharedPrefs";
     public static final String STEP = "step";
-    TextView step,score, currentday, preday3, preday2, preday1, curday, nxday1, nxday2, nxday3, buffstatus,info;
+    TextView step,score, currentday, preday3, preday2, preday1, curday, nxday1, nxday2, nxday3, buffstatus,info, textscore;
     SensorManager sensorManager;
     SensorEvent sensorEvent;
     Sensor msensor;
     String name;
+    Boolean isnew;
 
     boolean run = false;
     int stepcount = 0;
@@ -80,6 +81,7 @@ public class StepCounter_Activity extends Fragment implements SensorEventListene
         String strDate ;
         Dialog dialog = new Dialog(this.getActivity());
 
+        textscore = (TextView) getActivity().findViewById(R.id.textscore);
         curday = (TextView) getActivity().findViewById(R.id.curday);
         preday1 = (TextView) getActivity().findViewById(R.id.preday1);
         preday2 = (TextView) getActivity().findViewById(R.id.preday2);
@@ -101,6 +103,10 @@ public class StepCounter_Activity extends Fragment implements SensorEventListene
             run = false;
         }
         loadData();
+        if(isnew==true){
+            score.setVisibility(View.GONE);
+            textscore.setVisibility(View.GONE);
+        }
         step.setText(""+String.valueOf(stepcount));
         score.setText(""+String.valueOf(prestep));
 
@@ -168,7 +174,7 @@ public class StepCounter_Activity extends Fragment implements SensorEventListene
             step.setText(""+String.valueOf(stepcount));
             score.setText(""+String.valueOf(stepcount + prestep));
 
-            if(name!="Guest")ref.child("user").child(name).child("stepmove").setValue(stepcount+ prestep);
+            if(isnew==false)ref.child("user").child(name).child("stepmove").setValue(stepcount+ prestep);
         }
     }
 
@@ -191,6 +197,7 @@ public class StepCounter_Activity extends Fragment implements SensorEventListene
         n = sharedPreferences.getInt("laststep",0);
         name = sharedPreferences.getString("name", null);
         prestep =  stepsave;
+        isnew = sharedPreferences.getBoolean("isnew",false);
     }
 
 
