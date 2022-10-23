@@ -131,19 +131,24 @@ public class login_activity extends AppCompatActivity {
 
 
                          }
+                         @Override
+                         public void onCancelled(@NonNull DatabaseError error) {
+                             Log.e("E", error.toString());
+                         }
                      });
+
                  }
              }
-         }
+         });
 
-                signup.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent i = new Intent(login_activity.this, register_activity.class);
-                        startActivity(i);
-                        finish();
-                    }
-                });
+        signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(login_activity.this, register_activity.class);
+                startActivity(i);
+                finish();
+            }
+        });
 
         test =findViewById(R.id.testaccbtn);
         test.setOnClickListener(new View.OnClickListener() {
