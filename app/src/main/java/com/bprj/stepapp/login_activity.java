@@ -70,15 +70,14 @@ public class login_activity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (active == true)
-                {
-                    if (username.getText().toString().isEmpty() || password.getText().toString().isEmpty()) {
-                        Toast.makeText(login_activity.this, "Please enter your username or password.", Toast.LENGTH_SHORT).show();
-                    } else {
-                        databaseReference.child("user").addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                if (snapshot.hasChild(username.getText().toString())) {
+                if (username.getText().toString().isEmpty() || password.getText().toString().isEmpty()) {
+                    Toast.makeText(login_activity.this, "Please enter your username or password.", Toast.LENGTH_SHORT).show();
+                } else {
+                    databaseReference.child("user").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if (snapshot.hasChild(username.getText().toString())) {
+                                if (snapshot.child(username.getText().toString()).child("active").getValue(Boolean.class) == false) {
                                     final String getPassword = snapshot.child(username.getText().toString()).child("password").getValue(String.class);
                                     if (BCrypt.verifyer().verify(password.getText().toString().toCharArray(), getPassword).verified) {
                                         name = username.getText().toString();
@@ -100,20 +99,18 @@ public class login_activity extends AppCompatActivity {
                                         Toast.makeText(login_activity.this, "Wrong password", Toast.LENGTH_SHORT).show();
                                     }
                                 } else {
-                                    Toast.makeText(login_activity.this, "Username is not exist", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(login_activity.this, "Account is already logged in by another user", Toast.LENGTH_SHORT).show();
                                 }
+                            } else {
+                                Toast.makeText(login_activity.this, "Username is not exist", Toast.LENGTH_SHORT).show();
                             }
+                        }
 
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {
-                                Log.e("E", error.toString());
-                            }
-                        });
-                    }
-                }
-                else
-                {
-                    Toast.makeText(login_activity.this, "Account is already logged in by another user", Toast.LENGTH_SHORT).show();
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            Log.e("E", error.toString());
+                        }
+                    });
                 }
             }
         });
@@ -127,7 +124,9 @@ public class login_activity extends AppCompatActivity {
             }
         });
 
-        test = findViewById(R.id.testaccbtn);
+        test =
+
+                findViewById(R.id.testaccbtn);
         test.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
