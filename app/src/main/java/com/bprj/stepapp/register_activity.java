@@ -63,7 +63,7 @@ public class register_activity extends AppCompatActivity {
                     databaseReference.child("user").addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            if(snapshot.hasChild(username.getText().toString())){
+                            if(snapshot.hasChild(username.getText().toString())||username.getText().toString()=="Guest"){
                                 Toast.makeText(register_activity.this, "Username is already registered", Toast.LENGTH_SHORT).show();
                             }
                             else

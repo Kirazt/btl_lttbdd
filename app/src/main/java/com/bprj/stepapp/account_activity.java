@@ -452,7 +452,7 @@ public class account_activity extends Fragment {
         accpetlogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ref.child("user").child(accid.getText().toString()).child("active").setValue(false);
+                if(name!="Guest")ref.child("user").child(accid.getText().toString()).child("active").setValue(false);
                 isnew = false;
                 islogin = false;
                 name = "";
