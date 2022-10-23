@@ -46,7 +46,7 @@ public class account_activity extends Fragment {
     private DatabaseReference mDatabase;
     String acc_id, name, fullname, gmail, age, height, weight, password;
     boolean isnew = true;
-    boolean islogin =true;
+    boolean islogin =true, active = true;
     public static final String SHARED_PREFS = "sharedPrefs";
     LinearLayout editinfo,stepshow;
 
@@ -456,6 +456,7 @@ public class account_activity extends Fragment {
                 islogin = false;
                 name = "";
                 stepmove = 0;
+                active = false;
                 saveData();
                 Intent i = new Intent(getActivity(), login_activity.class);
                 startActivity(i);
@@ -502,6 +503,7 @@ public class account_activity extends Fragment {
         editor.putString("name", name);
         editor.putInt("stepmove", stepmove);
         editor.putBoolean("islogin", islogin);
+        editor.putBoolean("active", active);
         editor.apply();
     }
 

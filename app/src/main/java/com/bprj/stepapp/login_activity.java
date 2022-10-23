@@ -51,7 +51,7 @@ public class login_activity extends AppCompatActivity {
     Button test, login;
     EditText username, password;
     TextView signup;
-    Boolean islogin = false;
+    Boolean islogin = false, active = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,42 +70,50 @@ public class login_activity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (username.getText().toString().isEmpty() || password.getText().toString().isEmpty()) {
-                    Toast.makeText(login_activity.this, "Please enter your username or password.", Toast.LENGTH_SHORT).show();
-                } else {
-                    databaseReference.child("user").addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            if (snapshot.hasChild(username.getText().toString())) {
-                                final String getPassword = snapshot.child(username.getText().toString()).child("password").getValue(String.class);
-                                if (BCrypt.verifyer().verify(password.getText().toString().toCharArray(), getPassword).verified) {
-                                    name = username.getText().toString();
-                                    fullname = snapshot.child(username.getText().toString()).child("fullname").getValue(String.class);
-                                    stepmove = snapshot.child(username.getText().toString()).child("stepmove").getValue(int.class);
-                                    gmail = snapshot.child(username.getText().toString()).child("gmail").getValue(String.class);
-                                    age = snapshot.child(username.getText().toString()).child("age").getValue(String.class);
-                                    height = snapshot.child(username.getText().toString()).child("height").getValue(String.class);
-                                    weight = snapshot.child(username.getText().toString()).child("weight").getValue(String.class);
-                                    pass = snapshot.child(username.getText().toString()).child("password").getValue(String.class);
-                                    gender = snapshot.child(username.getText().toString()).child("gender").getValue(String.class);
-                                    islogin = true;
-                                    saveData();
-                                    Intent i = new Intent(login_activity.this, tab_activity.class);
-                                    startActivity(i);
-                                    finish();
+                if (active == true)
+                {
+                    if (username.getText().toString().isEmpty() || password.getText().toString().isEmpty()) {
+                        Toast.makeText(login_activity.this, "Please enter your username or password.", Toast.LENGTH_SHORT).show();
+                    } else {
+                        databaseReference.child("user").addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                if (snapshot.hasChild(username.getText().toString())) {
+                                    final String getPassword = snapshot.child(username.getText().toString()).child("password").getValue(String.class);
+                                    if (BCrypt.verifyer().verify(password.getText().toString().toCharArray(), getPassword).verified) {
+                                        name = username.getText().toString();
+                                        fullname = snapshot.child(username.getText().toString()).child("fullname").getValue(String.class);
+                                        stepmove = snapshot.child(username.getText().toString()).child("stepmove").getValue(int.class);
+                                        gmail = snapshot.child(username.getText().toString()).child("gmail").getValue(String.class);
+                                        age = snapshot.child(username.getText().toString()).child("age").getValue(String.class);
+                                        height = snapshot.child(username.getText().toString()).child("height").getValue(String.class);
+                                        weight = snapshot.child(username.getText().toString()).child("weight").getValue(String.class);
+                                        pass = snapshot.child(username.getText().toString()).child("password").getValue(String.class);
+                                        gender = snapshot.child(username.getText().toString()).child("gender").getValue(String.class);
+                                        active = true;
+                                        islogin = true;
+                                        saveData();
+                                        Intent i = new Intent(login_activity.this, tab_activity.class);
+                                        startActivity(i);
+                                        finish();
+                                    } else {
+                                        Toast.makeText(login_activity.this, "Wrong password", Toast.LENGTH_SHORT).show();
+                                    }
                                 } else {
-                                    Toast.makeText(login_activity.this, "Wrong password", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(login_activity.this, "Username is not exist", Toast.LENGTH_SHORT).show();
                                 }
-                            } else {
-                                Toast.makeText(login_activity.this, "Username is not exist", Toast.LENGTH_SHORT).show();
                             }
-                        }
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-                            Log.e("E", error.toString());
-                        }
-                    });
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+                                Log.e("E", error.toString());
+                            }
+                        });
+                    }
+                }
+                else
+                {
+                    Toast.makeText(login_activity.this, "Account is already logged in by another user", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -156,6 +164,7 @@ public class login_activity extends AppCompatActivity {
         editor.putString("password", pass);
         editor.putBoolean("islogin", islogin);
         editor.putString("gender", gender);
+        editor.putBoolean("active", active);
         editor.apply();
     }
 

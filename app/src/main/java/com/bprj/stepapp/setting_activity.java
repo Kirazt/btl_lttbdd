@@ -27,7 +27,7 @@ public class setting_activity extends AppCompatActivity {
     TextView point_tv, accid_tv, step_tv,logout,privacy_tv, faq_tv;
     String acc_id, name;
     Button back;
-    boolean notifistatus = true, isnew = true;
+    boolean notifistatus = true, isnew = true, active = true;
     Dialog dialog;
     int step =0,scoresave=0;
     @Override
@@ -128,6 +128,7 @@ public class setting_activity extends AppCompatActivity {
             public void onClick(View view) {
                 isnew =false;
                 name = "";
+                active = false;
                 saveData();
                 Intent i = new Intent(setting_activity.this, login_activity.class);
                 startActivity(i);
@@ -142,6 +143,7 @@ public class setting_activity extends AppCompatActivity {
         editor.putBoolean("notifi",notifistatus);
         editor.putBoolean("isnew", isnew);
         editor.putString("name", name);
+        editor.putBoolean("active", active);
         editor.apply();
     };
     public void loadData(){
