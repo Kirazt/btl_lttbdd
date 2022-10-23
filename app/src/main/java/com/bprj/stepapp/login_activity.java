@@ -68,70 +68,84 @@ public class login_activity extends AppCompatActivity {
         signup = findViewById(R.id.signuplink);
 
         login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+             @Override
+             public void onClick(View v) {
 
-                    if (username.getText().toString().isEmpty() || password.getText().toString().isEmpty()) {
-                        Toast.makeText(login_activity.this, "Please enter your username or password.", Toast.LENGTH_SHORT).show();
-                    } else {
-                        databaseReference.child("user").addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                if (snapshot.hasChild(username.getText().toString())) {
-                                    final String getPassword = snapshot.child(username.getText().toString()).child("password").getValue(String.class);
-                                    final Boolean checkactive = snapshot.child(username.getText().toString()).child("active").getValue(Boolean.class);
-                                    if(checkactive == false){
-                                        if (BCrypt.verifyer().verify(password.getText().toString().toCharArray(), getPassword).verified) {
-                                            name = username.getText().toString();
-                                            fullname = snapshot.child(username.getText().toString()).child("fullname").getValue(String.class);
-                                            stepmove = snapshot.child(username.getText().toString()).child("stepmove").getValue(int.class);
-                                            gmail = snapshot.child(username.getText().toString()).child("gmail").getValue(String.class);
-                                            age = snapshot.child(username.getText().toString()).child("age").getValue(String.class);
-                                            height = snapshot.child(username.getText().toString()).child("height").getValue(String.class);
-                                            weight = snapshot.child(username.getText().toString()).child("weight").getValue(String.class);
-                                            pass = snapshot.child(username.getText().toString()).child("password").getValue(String.class);
-                                            gender = snapshot.child(username.getText().toString()).child("gender").getValue(String.class);
-                                            active = true;
-                                            databaseReference.child("user").child(name).child("active").setValue(active);
-                                            islogin = true;
-                                            saveData();
-                                            Intent i = new Intent(login_activity.this, tab_activity.class);
-                                            startActivity(i);
-                                            finish();
-                                        } else {
-                                            Toast.makeText(login_activity.this, "Wrong password", Toast.LENGTH_SHORT).show();
-                                        }
-                                    }
-                                    else
-                                    {
-                                        Toast.makeText(login_activity.this, "Account is already logged in by another user", Toast.LENGTH_SHORT).show();
-                                    }
+                 if (username.getText().toString().isEmpty() || password.getText().toString().isEmpty()) {
+                     Toast.makeText(login_activity.this, "Please enter your username or password.", Toast.LENGTH_SHORT).show();
+                 } else {
+                     databaseReference.child("user").addListenerForSingleValueEvent(new ValueEventListener() {
+                         @Override
+                         public void onDataChange(@NonNull DataSnapshot snapshot) {
+                             if (snapshot.hasChild(username.getText().toString())) {
+                                 if (username.getText().toString().isEmpty() || password.getText().toString().isEmpty()) {
+                                     Toast.makeText(login_activity.this, "Please enter your username or password.", Toast.LENGTH_SHORT).show();
+                                 } else {
+                                     databaseReference.child("user").addListenerForSingleValueEvent(new ValueEventListener() {
+                                         @Override
+                                         public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                             if (snapshot.hasChild(username.getText().toString())) {
+                                                 if (snapshot.child(username.getText().toString()).child("active").getValue(Boolean.class) == false) {
+                                                     final String getPassword = snapshot.child(username.getText().toString()).child("password").getValue(String.class);
+                                                     final Boolean checkactive = snapshot.child(username.getText().toString()).child("active").getValue(Boolean.class);
+                                                     if (checkactive == false) {
+                                                         if (BCrypt.verifyer().verify(password.getText().toString().toCharArray(), getPassword).verified) {
+                                                             name = username.getText().toString();
+                                                             fullname = snapshot.child(username.getText().toString()).child("fullname").getValue(String.class);
+                                                             stepmove = snapshot.child(username.getText().toString()).child("stepmove").getValue(int.class);
+                                                             gmail = snapshot.child(username.getText().toString()).child("gmail").getValue(String.class);
+                                                             age = snapshot.child(username.getText().toString()).child("age").getValue(String.class);
+                                                             height = snapshot.child(username.getText().toString()).child("height").getValue(String.class);
+                                                             weight = snapshot.child(username.getText().toString()).child("weight").getValue(String.class);
+                                                             pass = snapshot.child(username.getText().toString()).child("password").getValue(String.class);
+                                                             gender = snapshot.child(username.getText().toString()).child("gender").getValue(String.class);
+                                                             active = true;
+                                                             databaseReference.child("user").child(name).child("active").setValue(active);
+                                                             islogin = true;
+                                                             saveData();
+                                                             Intent i = new Intent(login_activity.this, tab_activity.class);
+                                                             startActivity(i);
+                                                             finish();
+                                                         } else {
+                                                             Toast.makeText(login_activity.this, "Wrong password", Toast.LENGTH_SHORT).show();
+                                                         }
+                                                     } else {
+                                                         Toast.makeText(login_activity.this, "Account is already logged in by another user", Toast.LENGTH_SHORT).show();
+                                                     }
 
-                                } else {
-                                    Toast.makeText(login_activity.this, "Username is not exist", Toast.LENGTH_SHORT).show();
-                                }
-                            }
+                                                 } else {
+                                                     Toast.makeText(login_activity.this, "Account is already logged in by another user", Toast.LENGTH_SHORT).show();
+                                                 }
+                                             } else {
+                                                 Toast.makeText(login_activity.this, "Username is not exist", Toast.LENGTH_SHORT).show();
+                                             }
+                                         }
 
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {
-                                Log.e("E", error.toString());
-                            }
-                        });
+                                         @Override
+                                         public void onCancelled(@NonNull DatabaseError error) {
+                                             Log.e("E", error.toString());
+                                         }
+                                     });
+                                 }
+                             }
+
+
+                         }
+                     });
+                 }
+             }
+         }
+
+                signup.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent i = new Intent(login_activity.this, register_activity.class);
+                        startActivity(i);
+                        finish();
                     }
-                }
+                });
 
-        });
-
-        signup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(login_activity.this, register_activity.class);
-                startActivity(i);
-                finish();
-            }
-        });
-
-        test = findViewById(R.id.testaccbtn);
+        test =findViewById(R.id.testaccbtn);
         test.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
